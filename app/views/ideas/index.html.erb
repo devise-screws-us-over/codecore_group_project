@@ -3,13 +3,13 @@
   <% @ideas.each do |idea| %>
     <ul class="list-group">
       <li class="list-group-item">
-      <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-pushpin"></span></button>
-      <span>&nbsp;</span>
-      <span><%= link_to idea.title, idea %></span>
-      <button type="button" class="btn btn-default btn-lg">
-        <span class="glyphicon glyphicon-trash"></span></button></li>
-
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-pushpin"></span></button>
+        <span>&nbsp;</span>
+        <span><%= link_to idea.title, idea %></span>
+        <span class="idea-list-icons"><i class="btn fa fa-users btn-lg"></i>
+        <i class="btn fa fa-trash-o btn-lg"></i></span>
+      </li>
     </ul>
   <% end %>
 </div>
