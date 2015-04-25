@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :memberships, dependent: :destroy
   has_many :teams, through: :memberships, source: :team
 
+  has_one :profile, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
