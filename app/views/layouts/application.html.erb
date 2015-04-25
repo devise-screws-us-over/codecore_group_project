@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GroupIdea</title>
+  <title>Ideaz</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div id="header" class="col-md-12">
+      
+      <div id="header-logo">
+          <h1>Ideaz</h1>
+      </div>
 
-<%= yield %>
+      <div id="header-buttons" class="col-md-3">
+      (img-add) (img-setting) (img-signout)
+      </div>
+    </div>
 
+    <div id="sidebar" class="col-md-2">
+    Sidebar
+    </div>
+
+    <div class="content" class="col-md-10">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

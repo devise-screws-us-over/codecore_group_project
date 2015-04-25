@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+#header {
+  height: 100px;
+  background: gray;
+  display: block;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#header h1 {
+  float: left;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#header-logo {
+  display: inline-block;
+  float: left;
+  vertical-align: bottom;
+}
+
+#header-buttons {
+  display: inline-block;
+  float: right;
+  vertical-align: bottom;
+}
+
+#sidebar {
+  display: inline-block;
+}
+
+.content {
+  display: inline-block;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
