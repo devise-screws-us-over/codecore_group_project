@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ideaz</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+ <title>Ideaz</title>
+ <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
     <div id="header" class="col-md-12">
-      
+
       <div id="header-logo" class="col-md-3">
           <h1><%= link_to "Ideaz", root_path %></h1>
       </div>
@@ -27,25 +27,32 @@
       </div>
     </div>
 
-    <div id="sidebar" class="col-md-2">
-      <div>
-        <ul>
-          <li><%= link_to "Pinned", users_path, 
-            class: "btn btn-default" %></li>
-          <li><%= link_to "Created by me", users_path, 
-            class: "btn btn-default" %></li>
-          <li><%= link_to "Shared with me", users_path, 
-            class: "btn btn-default" %></li>
-        </ul>
-      </div>
+     <div id="header-buttons" class="col-md-3">
+       <span class="glyphicon glyphicon-plus"></span>
+       <span class="glyphicon glyphicon-cog"></span>
+       <span class="glyphicon glyphicon-log-out"></span>
+     </div>
+   </div>
 
-      <div class="sidebar-teams">
-        Teams
-        <ul>
-          <li><%= link_to "Team1", users_path, class: "btn btn-default" %></li>
-          <li><%= link_to "Team2", users_path, class: "btn btn-default" %></li>
-        </ul>
-      </div>
+   <div id="sidebar" class="col-md-2">
+     <div>
+       <ul>
+         <li><%= link_to "Pinned", user_pins_path(current_user),
+           class: "btn btn-default" %></li>
+         <li><%= link_to "Created by me", users_path,
+           class: "btn btn-default" %></li>
+         <li><%= link_to "Shared with me", users_path,
+           class: "btn btn-default" %></li>
+       </ul>
+     </div>
+
+     <div class="sidebar-teams">
+       Teams
+       <ul>
+         <li><%= link_to "Team1", users_path, class: "btn btn-default" %></li>
+         <li><%= link_to "Team2", users_path, class: "btn btn-default" %></li>
+       </ul>
+     </div>
 
       <div>
         <%= link_to users_path, class: "btn btn-default" do %>
@@ -54,10 +61,24 @@
       </div>
     </div>
 
-    <div class="content" class="col-md-10">
+
+    <div class="content col-md-10">
+      <%# flash messages ------------------------------------------ %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%# -- Main Content ------------------------------------------ %>
       <%= yield %>
+      <%= link_to "Logout", sessions_path, method: :delete %>
     </div>
 
-  </div>
+   <div class="content" class="col-md-10">
+     <%= yield %>
+   </div>
+
+ </div>
 </body>
 </html>

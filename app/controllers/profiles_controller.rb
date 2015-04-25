@@ -8,6 +8,8 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    user = @profile.user
+    @profile.handle = "@#{user.first_name}_#{user.last_name}" 
     if @profile.save
       redirect_to root_path, notice: "Profile Sucessfully Created"
     else
@@ -15,7 +17,6 @@ class ProfilesController < ApplicationController
       flash[:alert] = "Profile not created successfully"
     end
   end
-
 
   def edit
     @profile = Profile.find(params[:id])    
@@ -39,7 +40,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:body, :facebook, :twitter, :github, :handle)
+    params.require(:profile).permit(:body, :facebook, :twitter, :github, :handle, :avatar_url)
   end
   
 

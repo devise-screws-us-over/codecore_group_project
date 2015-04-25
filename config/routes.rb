@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :pins
+    resources :shares
   end
 
   resources :profiles
