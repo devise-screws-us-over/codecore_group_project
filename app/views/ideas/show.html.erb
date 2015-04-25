@@ -1,0 +1,16 @@
+<h1><%= @idea.title %></h1>
+<br>
+  <%= @idea.body %>
+  <br>
+  <%= link_to "Edit Your Idea", edit_idea_path(@idea) %>
+  <br>
+<%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
+  <% @idea.comments.each do |comment| %>
+  <%= comment.body %>
+  <%# comment.user.full_name %>
+  <%# comment.gravitor %>
+  <%= comment.created_at %>
+<% end %>
+
+<%= render partial: "/comments/comment" %>
+
