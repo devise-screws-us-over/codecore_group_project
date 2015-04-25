@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
+  #resources :user
 
-  resources :users
+  resources :users do
+    resources :pins #remove me
+    resources :shares #remove me
+    resources :invitations, only: [:index]
+  end
   
   resources :pins, only: [:index]
 
@@ -13,7 +18,9 @@ Rails.application.routes.draw do
 
   resources :shares
 
-  resources :teams
+  resources :teams do
+    resources :invitations, only: [:create]
+  end
   
   resources :ideas do
     resources :pins, only: [:create, :destroy]
@@ -21,5 +28,9 @@ Rails.application.routes.draw do
   end
 
   root "sessions#new"
+
+  resources :memberships, only: [:create, :update, :destroy]
+
+  
 
 end
