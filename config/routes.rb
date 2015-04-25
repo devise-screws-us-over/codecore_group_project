@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :profiles
     resources :pins
+    resources :shares
   end
 
   resources :sessions, only: [:new, :create] do

@@ -1,0 +1,9 @@
+<h1>Pinned Ideas</h1>
+<h3>Created By: <%= current_user %></h3>
+
+ <% @pinned_ideas.each do |pin| %>
+ <%= link_to idea.title, pin %>
+ <%= link_to "Delete", user_pin_path(@pin), method: :delete %>
+ <%= link_to "Share", new_user_share_path %>
+ <br>
+<% end %>
