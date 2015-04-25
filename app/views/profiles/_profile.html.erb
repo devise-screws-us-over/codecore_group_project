@@ -1,0 +1,16 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+  <br>
+  <%= f.label :facebook %>
+  <%= f.text_field :facebook %>
+  <br>
+  <%= f.label :twitter%>
+  <%= f.text_field :twitter %>
+  <br>
+  <%= f.label :github %>
+  <%= f.text_field :github %>
+  <br>
+  <%= f.submit %>
+
+<% end %>

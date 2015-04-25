@@ -27,12 +27,11 @@ gem 'bootstrap-sass'
 
 gem 'friendly_id'
 
-gem 'gravatar-ultimate'
+gem 'gravatar_image_tag'
 
 gem 'cancancan', '~> 1.10'
 
 gem 'simple_form'
-
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
