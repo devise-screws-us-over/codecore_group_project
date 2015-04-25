@@ -8,4 +8,7 @@ class Team < ActiveRecord::Base
 
   has_many :memberships, dependent: :destroy
   has_many :members, through: :memberships, source: :user
+
+  has_many :invitations, dependent: :destroy
+  has_many :invite_senders, through: :invitations, source: :user
 end
