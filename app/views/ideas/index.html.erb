@@ -1,6 +1,8 @@
-<h1>Welcome To Ideaz!!</h1>
-
-<% @ideas.each do |idea| %>
-  <%= idea.title %>
-  <br>
-<% end %>
+<h1>My Pinned Ideas</h1>
+<div class="content">
+  <% @ideas.each do |idea| %>
+    <ul class="list-group">
+      <li class="list-group-item"><%= idea.title  %></li>
+    </ul>
+  <% end %>
+</div>
