@@ -1,0 +1,24 @@
+<!-- PAGE 7 OF WIREFRAME -->
+
+<p>Managing Team:
+<h1><%= @team.name %></h1>
+
+<!-- Show the edit form -->
+<div>
+  <% simple_form_for @team do |f| %>
+    <%= f.input :name, placeholder: @team.name %>
+  <% end %>
+</div>
+
+<!-- List all the members of this team -->
+<div>
+  <p>Team Members</p>
+  <ul>
+  <% @members.each do |member| %>
+    <li><%= member.image %></li>
+  <% end %>
+  </ul>
+</div>
+
+<!-- Button to invite new members -->
+<%= link_to "Invite team members", new_membership_path, class: "btn btn-success" %>
