@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  attr_accessor :avatar_url
+
   has_many :ideas, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -22,4 +24,5 @@ class User < ActiveRecord::Base
   def full_name
     ("#{first_name} #{last_name}").strip
   end
+
 end
