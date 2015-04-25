@@ -2,6 +2,16 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  has_many :ideas, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  has_many :pins, dependent: :destroy
+  has_many :pinned_ideas, through: :pins, source: :idea
+
+  has_many :memberships, dependent: :destroy
+  has_many :teams, through: :memberships, source: :team
+
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true

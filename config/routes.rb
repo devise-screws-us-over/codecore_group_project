@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :profiles
-  resources :users
+
+  resources :users do
+    resources :profiles
+    resources :pins
+  end
 
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
