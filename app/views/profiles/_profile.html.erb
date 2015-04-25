@@ -1,15 +1,13 @@
 <%= simple_form_for @profile do |f| %>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %>
+  <%= f.input :bio %>
   <br>
-  <%= f.label :facebook %>
-  <%= f.text_field :facebook %>
+  <%= f.input :avatar_url, as: :hidden %>
   <br>
-  <%= f.label :twitter%>
-  <%= f.text_field :twitter %>
+  <%= f.input :facebook %>  
   <br>
-  <%= f.label :github %>
-  <%= f.text_field :github %>
+  <%= f.input :twitter%>
+  <br>
+  <%= f.input :github %>  
   <br>
   <%= f.submit %>
 

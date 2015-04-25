@@ -56,6 +56,7 @@
 
     <div class="content col-md-10">
       <%= yield %>
+      <%= link_to "Logout", sessions_path, method: :delete %>
     </div>
 
   </div>
