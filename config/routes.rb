@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :pins
+    resources :invitations, only: [:index]
   end
 
   resources :profiles
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
-  resources :teams
+  resources :teams do
+    resources :invitations, only: [:create]
+  end
   
   resources :ideas do
     resources :comments

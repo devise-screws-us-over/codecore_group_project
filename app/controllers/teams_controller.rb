@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   def edit
     @team = Team.find(params[:id])
     @members = @team.members
+    @invitation = Invitation.new
   end
 
   def show

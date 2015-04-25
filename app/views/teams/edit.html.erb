@@ -41,16 +41,14 @@
       </div>
       <div class="invite-new">
         <!-- CURRENTLY USING @team AS A PLACEHOLDER -->
-        <%= simple_form_for @team do |f| %>
+        <%= simple_form_for [@team,@invitation], method: :post do |f| %>
           Invite members by email address
           <p>Please separate each address by a comma</p>
-          <%= f.input :name %>
+          <%= f.input :array, label: 'List of email addresses' %>
           <%= f.submit %>
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
