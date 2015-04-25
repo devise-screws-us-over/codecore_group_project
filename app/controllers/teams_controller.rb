@@ -1,5 +1,10 @@
 class TeamsController < ApplicationController
   
+  # This block is only for testing
+  def index
+    @team = Team.all
+  end
+
   def new
     @team = Team.new
   end
@@ -15,6 +20,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @members = @team.members
   end
 
   def show

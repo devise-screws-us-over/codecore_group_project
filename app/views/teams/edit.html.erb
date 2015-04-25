@@ -5,8 +5,9 @@
 
 <!-- Show the edit form -->
 <div>
-  <% simple_form_for @team do |f| %>
-    <%= f.input :name, placeholder: @team.name %>
+  <%= simple_form_for @team do |f| %>
+    <%= f.input :name, label: 'Update team name:' %>
+    <%= f.submit %>
   <% end %>
 </div>
 
@@ -14,11 +15,37 @@
 <div>
   <p>Team Members</p>
   <ul>
-  <%# @members.each do |member| %>
-    <li><%# member.image %></li>
-  <%# end %>
+  <% @members.each do |member| %>
+    <li><%= member.first_name %> <%= member.last_name %></li>
+  <% end %>
   </ul>
 </div>
 
-<!-- Button to invite new members -->
+<!-- START BUTTON AND MODAL FOR INVITING MEMBERS -->
+
+<!-- Implement this when "new_membership_path" is ready -->
 <%# link_to "Invite team members", new_membership_path, class: "btn btn-success" %>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Invite Team Members
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
