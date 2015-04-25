@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425003824) do
+ActiveRecord::Schema.define(version: 20150425021235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(version: 20150425003824) do
 
   add_index "ideas", ["user_id"], name: "index_ideas_on_user_id", using: :btree
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "bio"
+    t.string   "handle"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "github"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -55,4 +68,5 @@ ActiveRecord::Schema.define(version: 20150425003824) do
   add_foreign_key "comments", "ideas"
   add_foreign_key "comments", "users"
   add_foreign_key "ideas", "users"
+  add_foreign_key "profiles", "users"
 end
