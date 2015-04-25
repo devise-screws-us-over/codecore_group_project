@@ -28,9 +28,9 @@ class TeamsController < ApplicationController
   end
 
   def update
-    @post = Team.find(params[:id])
+    @team = Team.find(params[:id])
     if @team.update(team_params)
-      redirect_to @team
+      redirect_to edit_idea_path(@team)
     else
       render 'edit'
     end
