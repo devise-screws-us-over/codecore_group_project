@@ -7,13 +7,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path
+      redirect_to root_path, notice: "Account Created"
     else
       render :new
+      flash[:alert] = "Can't Create Account!"
     end
-  end
-
-  def show
   end
 
   def edit
@@ -27,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
 end
