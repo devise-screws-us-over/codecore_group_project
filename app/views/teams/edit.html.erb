@@ -5,7 +5,7 @@
 
 <!-- Show the edit form -->
 <div>
-  <% simple_form_for @team do |f| %>
+  <% simple_form_for @team.each do |f| %>
     <%= f.input :name, placeholder: @team.name %>
   <% end %>
 </div>
