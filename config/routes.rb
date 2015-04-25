@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :memberships, only: [:create, :update, :destroy]
+
   root "ideas#index"
 
 end
