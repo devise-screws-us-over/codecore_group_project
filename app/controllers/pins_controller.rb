@@ -2,7 +2,7 @@ class PinsController < ApplicationController
    before_action :authenticate_user!
 
    def index
-     @pinned_ideas = current_user.pinned_ideas
+     @pins = current_user.pins
    end
 
    def create
@@ -24,7 +24,7 @@ class PinsController < ApplicationController
      @pin.destroy
 
      respond_to do |format|
-       format.html {redirect_to @idea, notice: "Unpinned!"}
+       format.html {redirect_to pins_path, notice: "Unpinned!"}
      end
    end
 end

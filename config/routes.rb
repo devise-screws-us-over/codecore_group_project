@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  #resources :user
 
   resources :users do
-    resources :pins
-    resources :shares
+    resources :pins #remove me
+    resources :shares #remove me
     resources :invitations, only: [:index]
   end
+  
+  resources :pins, only: [:index]
 
   resources :profiles
 
@@ -13,16 +16,21 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  resources :shares
+
   resources :teams do
     resources :invitations, only: [:create]
   end
   
   resources :ideas do
+    resources :pins, only: [:create, :destroy]
     resources :comments
   end
 
+  root "sessions#new"
+
   resources :memberships, only: [:create, :update, :destroy]
 
-  root "ideas#index"
+  
 
 end
