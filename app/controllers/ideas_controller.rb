@@ -13,7 +13,6 @@ class IdeasController < ApplicationController
 
   def create
     @idea = current_user.ideas.new(idea_params)
-    #@idea = current_user.ideas.new(idea_params)
     if @idea.save
       redirect_to @idea, notice: "Idea Created"
     else

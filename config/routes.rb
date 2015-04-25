@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :users do
-    resources :pins
-    resources :shares
-  end
+  resources :users
+  
+  resources :pins, only: [:index]
 
   resources :profiles
 
@@ -12,12 +11,15 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  resources :shares
+
   resources :teams
   
   resources :ideas do
+    resources :pins, only: [:create, :destroy]
     resources :comments
   end
 
-  root "ideas#index"
+  root "sessions#new"
 
 end

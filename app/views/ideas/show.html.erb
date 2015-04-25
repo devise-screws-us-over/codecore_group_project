@@ -6,7 +6,15 @@
  <br>
 <%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
  <br>
- <%= link_to "Pin Idea", user_pins_path, method: :post %>
+
+  
+<% pin = @idea.pins.find_by_user_id(current_user.id) %>
+  <% if pin %>
+    <%= link_to "Unpin", idea_pin_path(@idea, pin), method: :delete %>
+  <% else %>
+    <%= link_to "Pin Idea", idea_pins_path(@idea), method: :post %>
+<% end %>
+
  <% @idea.comments.each do |comment| %>
  <%= comment.body %>
  <%# comment.user.full_name %>
