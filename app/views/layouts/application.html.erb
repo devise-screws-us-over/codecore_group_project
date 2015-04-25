@@ -24,6 +24,8 @@
           <%= link_to users_path, class: "header-btn-default" do %>
             <i class="glyphicon glyphicon-log-out"></i>
           <% end %>
+
+        
       </div>
     </div>
 
@@ -54,7 +56,16 @@
       </div>
     </div>
 
+
     <div class="content col-md-10">
+      <%# flash messages ------------------------------------------ %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%# -- Main Content ------------------------------------------ %>
       <%= yield %>
       <%= link_to "Logout", sessions_path, method: :delete %>
     </div>
