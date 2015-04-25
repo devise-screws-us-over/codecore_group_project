@@ -1,6 +1,15 @@
-<h1>Welcome To Ideaz!!</h1>
+<h1>My Pinned Ideas</h1>
+<div class="content col-md-12">
+  <% @ideas.each do |idea| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-pushpin"></span></button>
+      <span>&nbsp;</span>
+      <span><%= link_to idea.title, idea %></span>
+      <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-trash"></span></button></li>
 
-<% @ideas.each do |idea| %>
-  <%= idea.title %>
-  <br>
-<% end %>
+    </ul>
+  <% end %>
+</div>

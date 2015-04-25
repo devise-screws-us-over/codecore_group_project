@@ -7,12 +7,25 @@
  <%= csrf_meta_tags %>
 </head>
 <body>
- <div class="container">
-   <div id="header" class="col-md-12">
+  <div class="container">
+    <div id="header" class="col-md-12">
 
-     <div id="header-logo" class="col-md-3">
-         <h1>Ideaz</h1>
-     </div>
+      <div id="header-logo" class="col-md-3">
+          <h1><%= link_to "Ideaz", root_path %></h1>
+      </div>
+
+      <div id="header-buttons" class="btn-group col-md-3">
+          <%= link_to new_idea_path, class: "header-btn-default" do %>
+            <i class="glyphicon glyphicon-plus"></i>
+          <% end %>
+          <%= link_to users_path, class: "header-btn-default" do %>
+            <i class="glyphicon glyphicon-cog"></i>
+          <% end %>
+          <%= link_to users_path, class: "header-btn-default" do %>
+            <i class="glyphicon glyphicon-log-out"></i>
+          <% end %>
+      </div>
+    </div>
 
      <div id="header-buttons" class="col-md-3">
        <span class="glyphicon glyphicon-plus"></span>
@@ -41,10 +54,26 @@
        </ul>
      </div>
 
-     <div>
-     <%= link_to "+ New Team", users_path %>
-     </div>
-   </div>
+      <div>
+        <%= link_to users_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-plus">  New Team</i>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="content col-md-10">
+      <%# flash messages ------------------------------------------ %>
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% elsif flash[:alert] %>
+          <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
+
+      <%# -- Main Content ------------------------------------------ %>
+      <%= yield %>
+      <%= link_to "Logout", sessions_path, method: :delete %>
+    </div>
 
    <div class="content" class="col-md-10">
      <%= yield %>

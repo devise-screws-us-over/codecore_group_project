@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to profile_path(@user.profile)
     else
       render :new
       flash[:alert] = "Invalid Login"

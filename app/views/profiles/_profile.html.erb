@@ -1,0 +1,14 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :bio %>
+  <br>
+  <%= f.input :avatar_url, as: :hidden %>
+  <br>
+  <%= f.input :facebook %>  
+  <br>
+  <%= f.input :twitter%>
+  <br>
+  <%= f.input :github %>  
+  <br>
+  <%= f.submit %>
+
+<% end %>

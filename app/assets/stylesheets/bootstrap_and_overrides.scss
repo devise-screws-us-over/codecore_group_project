@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.header-btn-default {
+  color: white;
+  border-style: none;
+  background-color: transparent;
+  padding: 5px;
+}
+
+.btn-default {
+  border-color: none;
+}
+
+.glyphicon-pushpin {
+  color: blue;
+  border-style: none;
+  background-color: transparent;
+  padding: 5px;
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+.list-group-item a {
+  color: black;
+}
