@@ -27,8 +27,6 @@ gem 'bootstrap-sass'
 
 gem 'friendly_id'
 
-gem 'gravatar_image_tag'
-
 gem 'cancancan', '~> 1.10'
 
 gem 'simple_form'
