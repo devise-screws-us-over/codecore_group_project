@@ -1,5 +1,11 @@
-<%= simple_form_for Share.new, url: idea_shares_path(idea), method: :post do |f| %>
-  <%= f.collection_check_boxes :team_ids, current_user.teams, :id, :name %>
-  <br>
-  <%= f.submit "Share With These Groups", class: "btn btn-success" %>
+<% if current_user.teams.count == 0 %>
+  <p>You don't have any teams created to share this idea with.  Please create a team by clicking the "add team button" on the left sidebar!</p>
+
+<% else %>
+  <%= simple_form_for Share.new, url: idea_shares_path(idea), method: :post do |f| %>
+    <%= f.collection_check_boxes :team_ids, current_user.teams, :id, :name %>
+    <br>
+    <%= f.submit "Share With These Groups", class: "btn btn-success" %>
+  <% end %>
+
 <% end %>

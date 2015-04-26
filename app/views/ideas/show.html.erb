@@ -7,6 +7,8 @@
     </button>
   </div>
   <div class="content"><h1><%= markdown(@idea.title) %></h1></div>
+  
+
   <div class="content">
     <% pin = @idea.pins.find_by_user_id(current_user.id) %>
       <% if pin %>
@@ -17,7 +19,10 @@
         <i class="glyphicon glyphicon-pushpin" style="color:green"></i><% end %>
       <% end %>
   </div>
-  <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+  <%#--from CANCANCAN ----------- %>
+  <% if can? :edit, @idea %>
+    <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+  <% end %>
 </div>
 
 <div>
