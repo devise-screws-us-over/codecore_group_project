@@ -1,10 +1,38 @@
-<h1>Pinned Ideas</h1>
-<h3>Created By: <%= current_user.full_name %></h3>
+<!-- <h1>Pinned Ideas</h1> -->
+<!-- <h3>Created By: <%#= current_user.full_name %></h3> -->
 
- <% @pins.each do |pin| %>
-  <%= link_to pin.idea.title, pin.idea %>
-  <br>
-  <%= link_to "Unpin", idea_pin_path(pin.idea, pin), method: :delete %>
+ <%# @pins.each do |pin| %>
+  <%#= link_to pin.idea.title, pin.idea %>
+  <!-- <br> -->
+  <%#= link_to "Unpin", idea_pin_path(pin.idea, pin), method: :delete %>
   <%# link_to "Share", new_user_share_path %>
-  <br>
-<% end %>
+  <!-- <br> -->
+<%# end %>
+
+<div class="content">
+    <h1>My Pinned Ideas</h1>
+</div>
+
+<div class="content col-md-12">
+  <% @pins.each do |pin| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+
+        <%= link_to idea_pin_path(pin.idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+          <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
+        <% end %>
+          
+        <span><%= link_to pin.idea.title, pin.idea %></span>
+
+        <span class="ideas-list-buttons">
+          <button type="button" class="btn btn-lg">
+            <span class="fa fa-users fa-2x"></span>
+          </button>
+          <button type="button" class="btn btn-lg">
+            <span class="fa fa-trash-o fa-2x"></span>
+          </button>
+        </span>
+      </li>
+    </ul>
+  <% end %>
+</div>
