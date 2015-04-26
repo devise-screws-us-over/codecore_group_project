@@ -45,6 +45,8 @@ gem 'redcarpet', '~> 3.0.0'
 gem 'best_in_place', '~> 3.0.1'
 
 gem 'coderay'
+
+gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
