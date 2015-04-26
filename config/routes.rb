@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   resources :memberships, only: [:create, :update, :destroy]
 
+  get "/shared_ideas" => "shares#shared_ideas"
+
   
 
 end
