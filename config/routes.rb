@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
   
-  resources :shares
+  #resources :shares
   
   resources :teams do
     resources :invitations, only: [:create]
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :ideas do
     resources :pins, only: [:create, :destroy]
     resources :comments
+    resources :shares
   end
 
   root "ideas#index"
