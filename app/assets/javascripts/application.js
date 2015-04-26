@@ -25,4 +25,13 @@ $(document).ready(function(){
     $('.list-group').sortable();
   });
 
+  // Function for filtering pins
+  $('#filter-library').change(function(){
+      var filter = $('#filter-library').val();
+      $("#ideas li:not(:contains('"+filter+"'))").hide();
+      $("#ideas li:contains('"+filter+"')").show();
+    }).keyup(function() {
+        $(this).change();
+    });
+
 });

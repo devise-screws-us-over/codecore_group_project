@@ -4,8 +4,11 @@
   </div>
 </div>  
 
+<!-- Field for filtering ideas: -->
+  <%= render "/layouts/filter" %>
+
 <div class="content col-md-12">
-  <ul class="list-group">
+  <ul class="list-group" id="ideas">
     <% @pins.each do |pin| %>
       <li class="list-group-item">
 

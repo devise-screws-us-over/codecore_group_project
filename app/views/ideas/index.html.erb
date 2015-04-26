@@ -3,18 +3,19 @@
     <h1>My Ideas</h1>
   </div>
 
-  <div class="content-element">
+<!-- DELETED THIS PLACEHOLDER -->
+<!--   <div class="content-element">
     <div class="content">
-      search
+      <%#= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
     </div>
-    <div class="content">
-      <%= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
-    </div>
-  </div>
+  </div> -->
+
 </div>
 
 <div class="content col-md-12">
-  <ul class="list-group">
+  <!-- Field for filtering ideas: -->
+    <%= render partial: "/layouts/filter" %>
+  <ul class="list-group" id="ideas">
     <% @ideas.each do |idea| %>
         <li class="list-group-item">       
 
