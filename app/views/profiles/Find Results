@@ -1,0 +1,178 @@
+Searching 2615 files for "btn-default"
+
+/Users/Gerald/cc_project/codecore_group_project/app/assets/stylesheets/application.css.scss:
+   62  }
+   63  
+   64: .btn btn-default {
+   65    background-color: #000;
+   66  }
+
+/Users/Gerald/cc_project/codecore_group_project/app/assets/stylesheets/bootstrap_and_overrides.scss:
+    2  @import "bootstrap";
+    3  
+    4: .header-btn-default {
+    5    color: white;
+    6    border-style: none;
+    .
+    9  }
+   10  
+   11: .btn-default {
+   12    border-color: none;
+   13  }
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/ideas/index.html.erb:
+    9      </div>
+   10      <div class="content">
+   11:       <%= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
+   12      </div>
+   13    </div>
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/ideas/show.html.erb:
+   11      <% pin = @idea.pins.find_by_user_id(current_user.id) %>
+   12        <% if pin %>
+   13:         <%= link_to idea_pin_path(@idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+   14          <i class="glyphicon glyphicon-pushpin" style="color:red"></i><% end %>
+   15        <% else %>
+   16:         <%= link_to idea_pins_path(@idea), method: :post, class: "btn btn-default btn-lg" do %>
+   17          <i class="glyphicon glyphicon-pushpin" style="color:green"></i><% end %>
+   18        <% end %>
+   19    </div>
+   20:   <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+   21  </div>
+   22  
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/layouts/application.html.erb:
+   18  
+   19        <div class="header-buttons" class="btn-group col-md-3">
+   20:           <%= link_to new_idea_path, class: "header-btn-default btn-lg" do %>
+   21              <i class="glyphicon glyphicon-plus"></i>
+   22            <% end %>
+   23            <% if current_user.profile %>
+   24:             <%= link_to edit_profile_path(current_user.profile), class: "header-btn-default btn-lg" do %>
+   25                <i class="glyphicon glyphicon-cog"></i>
+   26              <% end %>
+   27            <% end %>
+   28:           <%= link_to sessions_path, method: :delete, class: "header-btn-default btn-lg" do %>
+   29              <i class="glyphicon glyphicon-log-out"></i>
+   30            <% end %>
+   ..
+   36         <ul>
+   37           <li><%= link_to "Pinned", pins_path,
+   38:            class: "btn btn-default" %></li>
+   39           <li><%= link_to "Created by me", ideas_path,
+   40:            class: "btn btn-default" %></li>
+   41           <li><%= link_to "Shared with me", shared_ideas_path,
+   42:            class: "btn btn-default" %></li>
+   43         </ul>
+   44       </div>
+   ..
+   47        <%# DROPDOWN MENU FOR TEAM LIST -------------------------- %>
+   48         <div class="dropdown">
+   49:           <button type="button" class="btn btn-default dropdown-toggle button-full" data-toggle="dropdown"> 
+   50                My Teams<span class="caret"></span></button>
+   51                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dLabel">
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/pins/index.html.erb:
+   10          <li class="list-group-item">
+   11  
+   12:           <%= link_to idea_pin_path(pin.idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+   13              <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
+   14            <% end %>
+
+/Users/Gerald/cc_project/codecore_group_project/config/initializers/simple_form_bootstrap.rb:
+    2  SimpleForm.setup do |config|
+    3    config.error_notification_class = 'alert alert-danger'
+    4:   config.button_class = 'btn btn-default'
+    5    config.boolean_label_class = nil
+    6  
+
+~/cc_project/codecore_group_project/log/development.log:
+    <binary>
+
+71 matches across 8 files
+
+
+Searching 2672 files for "btn btn-default"
+
+/Users/Gerald/cc_project/codecore_group_project/app/assets/stylesheets/application.css.scss:
+   62  }
+   63  
+   64: .btn btn-default {
+   65    background-color: #000;
+   66  }
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/ideas/index.html.erb:
+    9      </div>
+   10      <div class="content">
+   11:       <%= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
+   12      </div>
+   13    </div>
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/ideas/show.html.erb:
+   18        <% end %>
+   19    </div>
+   20:   <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+   21  </div>
+   22  
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/layouts/application.html.erb:
+   36         <ul>
+   37           <li><%= link_to "Pinned", pins_path,
+   38:            class: "btn btn-default" %></li>
+   39           <li><%= link_to "Created by me", ideas_path,
+   40:            class: "btn btn-default" %></li>
+   41           <li><%= link_to "Shared with me", shared_ideas_path,
+   42:            class: "btn btn-default" %></li>
+   43         </ul>
+   44       </div>
+   ..
+   47        <%# DROPDOWN MENU FOR TEAM LIST -------------------------- %>
+   48         <div class="dropdown">
+   49:           <button type="button" class="btn btn-default dropdown-toggle button-full" data-toggle="dropdown"> 
+   50                My Teams<span class="caret"></span></button>
+   51                  <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dLabel">
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/pins/index.html.erb:
+   10          <li class="list-group-item">
+   11  
+   12:           <%= link_to idea_pin_path(pin.idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+   13              <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
+   14            <% end %>
+
+/Users/Gerald/cc_project/codecore_group_project/config/initializers/simple_form_bootstrap.rb:
+    2  SimpleForm.setup do |config|
+    3    config.error_notification_class = 'alert alert-danger'
+    4:   config.button_class = 'btn btn-default'
+    5    config.boolean_label_class = nil
+    6  
+
+~/cc_project/codecore_group_project/log/development.log:
+    <binary>
+
+35 matches across 7 files
+
+
+Searching 2797 files for ":facebook"
+
+/Users/Gerald/cc_project/codecore_group_project/app/controllers/profiles_controller.rb:
+   41  
+   42    def profile_params
+   43:     params.require(:profile).permit(:body, :facebook, :twitter, :github, :handle, :avatar_url)
+   44    end
+   45    
+
+/Users/Gerald/cc_project/codecore_group_project/app/views/profiles/_profile.html.erb:
+    4    <%= f.input :avatar_url, as: :hidden %>
+    5    <br>
+    6:   <%= f.input :facebook %>  
+    7    <br>
+    8    <%= f.input :twitter%>
+
+/Users/Gerald/cc_project/codecore_group_project/db/migrate/20150425021235_create_profiles.rb:
+    5        t.text :bio
+    6        t.string :handle
+    7:       t.string :facebook
+    8        t.string :twitter
+    9        t.string :github
+
+3 matches across 3 files
