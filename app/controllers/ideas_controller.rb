@@ -34,11 +34,13 @@ class IdeasController < ApplicationController
 
   def edit
     @idea = current_user.ideas.find(params[:id])
+    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
   end
 
 
   def update
     @idea = current_user.ideas.find(params[:id])
+    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
     if @idea.update(idea_params)
       redirect_to @idea, notice: "Idea Updated Successfully!"
     else
@@ -50,6 +52,7 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea = current_user.ideas.find(params[:id])
+    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
     @idea.destroy
     redirect_to root_path
   end
