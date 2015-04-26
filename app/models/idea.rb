@@ -14,4 +14,11 @@ class Idea < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :body, presence: true
 
+  def mk_title
+    markdown title
+  end
+
+  def mk_body
+    markdown body
+  end
 end
