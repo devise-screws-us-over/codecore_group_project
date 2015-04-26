@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery-ui/sortable
+//= require jquery.purr
+//= require best_in_place
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
 
 $(document).ready(function(){
 
