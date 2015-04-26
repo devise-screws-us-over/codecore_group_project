@@ -1,7 +1,8 @@
-<div class="content col-md-12"> 
+<!-- PAGE 7 OF WIREFRAME -->
+<div class="container col-md-12">
   <div class="content">
     <button type="button" class="btn btn-lg">
-      <%= link_to team_path do %>
+      <%= link_to team_path @team do %>
         <i class="glyphicon glyphicon-menu-left"></i>
       <% end %>
     </button>
@@ -27,7 +28,7 @@
       <%= member.first_name %> <%= member.last_name %></div></li>
   <% end %>
   </ul>
-</div>
+</div>ß
 
 <!-- START BUTTON AND MODAL FOR INVITING MEMBERS -->
 
@@ -60,4 +61,5 @@
       </div>
     </div>
   </div>
+
 </div>
