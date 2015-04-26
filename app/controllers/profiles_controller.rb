@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:body, :facebook, :twitter, :github, :handle, :avatar_url)
+    params.require(:profile).permit(:bio, :facebook, :twitter, :github, :handle, :avatar_url)
   end
   
 
