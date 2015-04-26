@@ -7,9 +7,6 @@ class InvitationsController < ApplicationController
     @new_array = (params[:invitation][:array]).split(",").each do |item|
       item.delete!(" ")
     end
-    # byebug
-    # john@john.com      ,       jane@jane.com
-    # render text: @new_array
     @new_array.each do |email|
       @invitation = Invitation.new
       # Assign attributes
@@ -17,17 +14,19 @@ class InvitationsController < ApplicationController
       @invitation.recipient = email
       @invitation.user = current_user
       @invitation.key = SecureRandom.hex
-      @invitation.is_sent = false
 
+      # This breaks if I use "email" instead of "@invitation.recipient"
       if User.find_by_email(email)
         @invitation.has_account = true
       else
         @invitation.has_account = false
       end
 
-      # Save
       @invitation.save
-      InviteMailer.email_invitee(@invitation).deliver_later
+      # In case the randomly-generated string is not unique, append the Invitation ID 
+      @invitation.key = "#{@invitation.key}#{@invitation.id}"
+      @invitation.save
+      InviteMailer.invite_by_email(@invitation).deliver
     end
     redirect_to edit_team_path(@team)
   end

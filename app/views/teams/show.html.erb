@@ -1,8 +1,13 @@
 <!-- PAGE 6 WIREFRAME -->
+<% byebug %>
 <div id="">
   <h1 id="">
     <%= @team.name %>
   </h1>
+
+  <% if @key_match %>
+    <p><%= @key_match %></p>
+  <% end %>
 
   <ul id="ideas">
     <% @ideas.order("title").each do |idea| %>

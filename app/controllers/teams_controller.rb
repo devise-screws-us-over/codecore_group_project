@@ -24,6 +24,11 @@ class TeamsController < ApplicationController
   end
 
   def show
+    if params[:key_match]
+      @key_match = params[:key_match]
+      flash[:notice] = "You have successfully joined this team!"
+    end
+
     @team = Team.find(params[:id])
     @ideas = @team.most_popular
   end
