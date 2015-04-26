@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-  
   def new
     @team = Team.new
   end
@@ -19,6 +18,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @ideas = @team.most_popular
   end
 
   def update
