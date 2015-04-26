@@ -17,8 +17,15 @@
   <% @ideas.each do |idea| %>
     <ul class="list-group">
       <li class="list-group-item">
-        <button type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-pushpin"></span></button>
+
+        <span><% pin = idea.pins.find_by_user_id(current_user.id) %>
+          <% if pin %>
+            <%= link_to idea_pin_path(idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+            <i class="glyphicon glyphicon-pushpin" style="color:red"></i><% end %>
+          <% else %>
+            <%= link_to idea_pins_path(idea), method: :post, class: "btn btn-default btn-lg" do %>
+            <i class="glyphicon glyphicon-pushpin" style="color:green"></i><% end %>
+          <% end %></span>
         <span>&nbsp;</span>
         <span><%= link_to idea.title, idea %></span>
         <span class="ideas-list-buttons">
