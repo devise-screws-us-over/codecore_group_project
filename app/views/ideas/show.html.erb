@@ -7,7 +7,6 @@
     </button>
   </div>
   <div class="content"><h1><%= markdown(@idea.title) %></h1></div>
-  
 
   <div class="content">
     <% pin = @idea.pins.find_by_user_id(current_user.id) %>
