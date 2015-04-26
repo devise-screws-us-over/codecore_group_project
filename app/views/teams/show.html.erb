@@ -1,38 +1,72 @@
 <!-- PAGE 6 WIREFRAME -->
-<% byebug %>
-<div id="">
-  <h1 id="">
-    <%= @team.name %>
-  </h1>
+<div>
+  <div class="content">
+    <h1><%= markdown(@team.name) %></h1>
+  </div>
+
+  <div class="content-element">
+    <input id="filter-library" />
+    <div class="content">
+      <%# extra layer of protection from CanCanCan %>
+      <% if can? :edit, @team %>
+        <% if current_user == @team.owner %>
+          <%= link_to "Manage", edit_team_path, class: "btn btn-default fa fa-pencil" %>
+        <% else %>
+          <%= link_to "Leave Team", ideas_path, class: "btn btn-default fa fa-pencil" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="content col-md-12">
+  <ul class="list-group" id="ideas">
+    <% @ideas.order("title").each do |idea| %>
+        <li class="list-group-item">
+
+          <% pin = idea.pins.find_by_user_id(current_user.id) %>
+            <% if pin %>
+              <%= link_to idea_pin_path(idea, pin), method: :delete, class: "btn btn-lg" do %>
+                <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
+              <% end %>
+            <% else %>
+              <%= link_to idea_pins_path(idea), method: :post, class: "btn btn-lg" do %>
+                <span><i class="glyphicon glyphicon-pushpin" style="color:green"></i></span>
+              <% end %>
+            <% end %>
+
+          <span class="idea-title"><%= link_to idea.title, idea %></span>
+
+          <!-- Modal to Share An Idea with A Team (hidden)-->
+          <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
+
+        <% if can? :edit, idea %>
+          <div class="ideas-list-buttons">
+            <div class = "list-button">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#<%= dom_id(idea) %>">
+                <span class="fa fa-users"></span>
+              </button>
+            </div>
+          <% end %>
+
+            <div class="list-button">
+            <% if can? :delete, idea %>
+              <% if idea.user == current_user %>
+                <%= button_to idea_path(idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"}, class: "btn btn-lg" do %>
+                  <span><i class="fa fa-trash-o"></i></span>
+                <% end %>
+              <% end %>
+            <% end %>
+            </div>            
+          </div>
+
+        </li>
+    <% end %>
+  </ul>
 
   <% if @key_match %>
     <p><%= @key_match %></p>
   <% end %>
-
-  <ul id="ideas">
-    <% @ideas.order("title").each do |idea| %>
-      <li>
-      <%= link_to idea.title, idea_path %>
-      <!-- Need to change on 'team.rb' : Order with the most active idea first -->
-      <!-- Need to change here : Idea to Piined list -->
-      </li>
-      <br>
-    <% end %>
-  </ul>
-
-  <%# extra layer of protection from CanCanCan %>
-  <% if can? :edit, @team %>
-  <button class="button">
-    <% if current_user == @team.owner %>
-      <%= link_to "Manage", edit_team_path %>
-    <% else %>
-      <%= link_to "Leave Team", ideas_path %>
-    <% end %>
-  </button>
-  <% end %>
-
-  <input id="filter-library" />
-
 </div>
 
 <script>
