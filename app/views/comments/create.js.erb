@@ -1,0 +1,9 @@
+<% if @comment.errors.any? %>
+  $(".comment_form").html("<%= j render '/comments/comment' %>");
+<% else %>
+  $(".comments").html("<%= j render partial: '/comments/all_comment', locals: {comment: @comment} %>");
+  
+  <% @comment = Comment.new %>
+  $(".comment_form").html("<%= j render '/comments/comment' %>");
+
+<% end %>
