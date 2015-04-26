@@ -1,0 +1,11 @@
+<h1>My Shared Ideas (Sorted By Team)</h1>
+
+<% @teams.each do |team| %>
+    <h2><%= link_to team.name, team_path(team) %></h2>
+    <hr>
+    <% team.shared_ideas.each do |idea| %>
+        <%= link_to idea.title, idea_path(idea) %>
+         <br>
+      <% end %>
+<% end %>
+
