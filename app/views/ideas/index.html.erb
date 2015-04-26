@@ -16,18 +16,11 @@
 <div class="content col-md-12">
   <ul class="list-group">
     <% @ideas.each do |idea| %>
-        <li class="list-group-item">
+        <li class="list-group-item">       
 
-          <% pin = idea.pins.find_by_user_id(current_user.id) %>
-            <% if pin %>
-              <%= link_to idea_pin_path(idea, pin), method: :delete, class: "btn btn-lg" do %>
-                <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
-              <% end %>
-            <% else %>
-              <%= link_to idea_pins_path(idea), method: :post, class: "btn btn-lg" do %>
-                <span><i class="glyphicon glyphicon-pushpin" style="color:green"></i></span>
-              <% end %>
-            <% end %>
+          <div class="pin" id= "<%= dom_id(idea) %>">
+            <%= render partial: "/pins/pin", locals: {idea: idea} %>
+          </div>
           
           <span class="idea-title"><%= link_to idea.title, idea %></span>
 

@@ -7,13 +7,13 @@
 <div class="content col-md-12">
   <ul class="list-group">
     <% @pins.each do |pin| %>
-        <li class="list-group-item">
+      <li class="list-group-item">
 
-          <%= link_to idea_pin_path(pin.idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
-            <span><i class="glyphicon glyphicon-pushpin" style="color:red"></i></span>
-          <% end %>
-            
-          <span><%= link_to pin.idea.title, pin.idea %></span>
+        <div class="pin" id= "<%= dom_id(pin.idea) %>">
+          <%= render partial: "/pins/pin_my_pins", locals: {pin: pin} %>
+        </div>
+          
+        <span><%= link_to pin.idea.title, pin.idea %></span>
 
         <% if can? :edit, pin.idea %>
           <div class="ideas-list-buttons">
@@ -25,7 +25,7 @@
           <% end %>
 
           <!-- Modal to Share An Idea with A Team (hidden)-->
-          <%= render partial: "/shared/share_modal", locals: {idea: pin.idea} %>          
+          <%= render partial: "/shared/share_modal", locals: {idea: pin.idea} %>        
 
           <% if can? :delete, pin.idea %>    
             <div class="list-button">
@@ -38,7 +38,7 @@
           <% end %>          
           </div>
 
-        </li>
+      </li>
     <% end %>
   </ul>
 </div>
