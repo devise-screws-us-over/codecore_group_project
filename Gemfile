@@ -47,6 +47,8 @@ gem 'best_in_place', '~> 3.0.1'
 gem 'coderay'
 
 gem 'puma'
+
+gem 'jquery-turbolinks'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
