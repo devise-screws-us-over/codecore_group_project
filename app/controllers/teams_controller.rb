@@ -1,5 +1,10 @@
 class TeamsController < ApplicationController
   
+  # This block is only for testing
+  def index
+    @team = Team.all
+  end
+
   def new
     @team = Team.new
   end
@@ -15,6 +20,8 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @members = @team.members
+    @invitation = Invitation.new
   end
 
   def show
@@ -22,9 +29,9 @@ class TeamsController < ApplicationController
   end
 
   def update
-    @post = Team.find(params[:id])
+    @team = Team.find(params[:id])
     if @team.update(team_params)
-      redirect_to @team
+      redirect_to edit_team_path(@team)
     else
       render 'edit'
     end

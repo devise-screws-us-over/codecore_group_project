@@ -9,12 +9,10 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
  *= require font-awesome
  *= require_tree .
  *= require_self
  */
-
 
 .header {
   position: relative;
@@ -22,6 +20,7 @@
   background: gray;
   display: block;
   font-family: "Comic Sans MS", cursive, sans-serif;
+  position: relative;
 }
 
 .header h1 a {
@@ -50,7 +49,6 @@
   display: inline-block;
   float: right;
   text-align: right;
-  vertical-align: bottom;
 }
 
 .header-buttons li {
@@ -91,4 +89,4 @@ ul {
 
 .ideas-list-search {
   float: right;
-}
+ } 

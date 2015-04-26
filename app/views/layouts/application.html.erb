@@ -30,13 +30,12 @@
     <div id="sidebar" class="col-md-2">
      <div>
        <ul>
-          <li><%#= link_to user_pins_path(current_user), class: "btn btn-default" do %>
-            <i class="glyphicon glyphicon-pushpin"></i>Pinned
-            <%# end %></li>
-          <li><%= link_to "Created by me", ideas_path,
-            class: "btn btn-default" %></li>
-          <li><%= link_to "Shared with me", users_path,
-            class: "btn btn-default" %></li>
+         <li><%# link_to "Pinned", user_pins_path(current_user),
+           class: "btn btn-default" %></li>
+         <li><%= link_to "Created by me", users_path,
+           class: "btn btn-default" %></li>
+         <li><%= link_to "Shared with me", users_path,
+           class: "btn btn-default" %></li>
        </ul>
      </div>
 
