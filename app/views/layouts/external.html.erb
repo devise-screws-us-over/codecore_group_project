@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Ideaz</title>
+ <%= stylesheet_link_tag    'external', media: 'all', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= csrf_meta_tags %>
+</head>
+<body>
+  <div>
+
+    <%# flash messages ------------------------------------------ %>
+    <% if flash[:notice] %>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
+    <% elsif flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%# -- Main Content ------------------------------------------ %>
+    <%= yield %>
+
+ </div>
+</body>
+</html>

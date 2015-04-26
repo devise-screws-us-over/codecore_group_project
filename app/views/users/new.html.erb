@@ -1,8 +1,14 @@
-<%= simple_form_for @user do |f| %>
- <%= f.input :first_name %>
- <%= f.input :last_name %>
- <%= f.input :email %>
- <%= f.input :password %>
- <%= f.input :password_confirmation %>
- <%= f.submit "Create Account" %>
-<% end %>
+<div class="centered-login">
+  <div class="ideaz-logo">
+    <span class="fa fa-lightbulb-o fa-5x"></span>
+  </div>
+  <h1>Welcome to Ideaz</h1>
+  <%= simple_form_for @user do |f| %>
+   <%= f.input :first_name %>
+   <%= f.input :last_name %>
+   <%= f.input :email %>
+   <%= f.input :password %>
+   <%= f.input :password_confirmation %>
+   <%= f.submit "Create Account" %>
+  <% end %>
+</div>
