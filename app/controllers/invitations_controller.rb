@@ -4,7 +4,9 @@ class InvitationsController < ApplicationController
 
   def create
     @team = Team.find params[:team_id]
-    @new_array = (params[:invitation][:array]).split(",")
+    @new_array = (params[:invitation][:array]).split(",").each do |item|
+      item.delete!(" ")
+    end
     # byebug
     # john@john.com      ,       jane@jane.com
     # render text: @new_array
@@ -12,12 +14,20 @@ class InvitationsController < ApplicationController
       @invitation = Invitation.new
       # Assign attributes
       @invitation.team = @team
-      @invitation.recipient = email.delete(" ")
+      @invitation.recipient = email
       @invitation.user = current_user
       @invitation.key = SecureRandom.hex
       @invitation.is_sent = false
+
+      if User.find_by_email(email)
+        @invitation.has_account = true
+      else
+        @invitation.has_account = false
+      end
+
       # Save
       @invitation.save
+      InviteMailer.email_invitee(@invitation).deliver_later
     end
     redirect_to edit_team_path(@team)
   end
