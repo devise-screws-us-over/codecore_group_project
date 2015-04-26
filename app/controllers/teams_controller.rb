@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-  
   # This block is only for testing
   def index
     @team = Team.all
@@ -26,6 +25,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @ideas = @team.most_popular
   end
 
   def update

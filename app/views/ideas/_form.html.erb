@@ -1,9 +1,15 @@
-<%= form_for @idea do |f| %>
+<% @idea.errors.full_messages.each do |message| %>
+  <span class="error-message"><%= message %></span>
+  <br>
+<% end %>
+
+<%= simple_form_for @idea do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: "form-control" %>
   <br>
   <%= f.label :body %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, class: "form-control", rows: 5 %>
   <br>
-  <%= f.submit "Create Idea" %>
+  <%= f.submit "Create Idea", class: "btn btn-primary" %>
+  <%= link_to "cancel", root_path, class: "btn btn-danger" %>
 <% end %>

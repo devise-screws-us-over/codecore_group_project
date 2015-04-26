@@ -24,7 +24,7 @@ class PinsController < ApplicationController
      @pin.destroy
 
      respond_to do |format|
-       format.html {redirect_to pins_path, notice: "Unpinned!"}
+       format.html {redirect_to @idea, notice: "Unpinned!"}
      end
    end
 end

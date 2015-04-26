@@ -2,7 +2,7 @@ class IdeasController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas.all
   end
 
 

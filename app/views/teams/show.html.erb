@@ -1,5 +1,39 @@
 <!-- PAGE 6 WIREFRAME -->
+<div id="">
+  <h1 id="">
+    <%= @team.name %>
+  </h1>
 
-<h1><%= @team.name %></h1>
+  <ul id="ideas">
+    <% @ideas.order("title").each do |idea| %>
+      <li>
+      <%= link_to idea.title, ideas_path %>
+      <!-- Need to change on 'team.rb' : Order with the most active idea first -->
+      <!-- Need to change here : Idea to Piined list -->
+      </li>
+      <br>
+    <% end %>
+  </ul>
 
-<input type="text"></input>
+  <button class="button">
+    <% if current_user == @team.owner %>
+      <%= link_to "Manage", edit_team_path %>
+    <% else %>
+      <%= link_to "Leave Team", ideas_path %>
+    <% end %>
+  </button>
+
+  <input id="filter-library" />
+
+</div>
+
+<script>
+$('#filter-library').change(function(){
+    var filter = $('#filter-library').val();
+    $("#ideas li:not(:contains('"+filter+"'))").hide();
+    $("#ideas li:contains('"+filter+"')").show();
+  }).keyup(function() {
+      $(this).change();
+  });
+  //Use case sensitive?
+</script>
