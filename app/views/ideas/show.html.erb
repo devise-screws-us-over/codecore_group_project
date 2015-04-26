@@ -10,10 +10,10 @@
   <div class="content">
     <% pin = @idea.pins.find_by_user_id(current_user.id) %>
       <% if pin %>
-        <%= link_to idea_pin_path(@idea, pin), method: :delete, class: "btn btn-default btn-lg" do %>
+        <%= link_to idea_pin_path(@idea, pin), method: :delete, class: "btn btn-lg" do %>
         <i class="glyphicon glyphicon-pushpin" style="color:red"></i><% end %>
       <% else %>
-        <%= link_to idea_pins_path(@idea), method: :post, class: "btn btn-default btn-lg" do %>
+        <%= link_to idea_pins_path(@idea), method: :post, class: "btn btn-lg" do %>
         <i class="glyphicon glyphicon-pushpin" style="color:green"></i><% end %>
       <% end %>
   </div>

@@ -61,6 +61,10 @@
   float: right;
 }
 
+.btn-lg {
+  background-color: transparent;
+}
+
 .btn btn-default {
   background-color: #000;
 }
@@ -90,7 +94,9 @@ ul {
 }
 
 .list-group-item {
-  margin-bottom: 10px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 50px;
 }
 
 .ideas-list-buttons {
@@ -111,4 +117,4 @@ ul {
 
 .ideas-list-search {
   float: right;
- } 
+ }
