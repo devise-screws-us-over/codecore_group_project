@@ -18,7 +18,7 @@
           <%= link_to new_idea_path, class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-plus"></i>
           <% end %>
-          <%= link_to users_path, class: "header-btn-default btn-lg" do %>
+          <%= link_to edit_profile_path(current_user.profile), class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-cog"></i>
           <% end %>
           <%= link_to sessions_path, method: :delete, class: "header-btn-default btn-lg" do %>
