@@ -37,7 +37,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Invite Members to this Team</h4>
       </div>
       <div class="invite-new">
         <!-- CURRENTLY USING @team AS A PLACEHOLDER -->
@@ -45,7 +45,7 @@
           Invite members by email address
           <p>Please separate each address by a comma</p>
           <%= f.input :array, label: 'List of email addresses' %>
-          <%= f.submit %>
+          <%= f.submit "Send Invitations!" %>
         <% end %>
       </div>
       <div class="modal-footer">

@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -19,14 +20,14 @@
   height: 100px;
   background: gray;
   display: block;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: relative;
 }
 
 .header h1 a {
   float: left;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 40px;
   text-decoration: none;
   color: black;
 }
@@ -60,6 +61,10 @@
   float: right;
 }
 
+.btn-lg {
+  background-color: transparent;
+}
+
 .btn btn-default {
   background-color: #000;
 }
@@ -72,6 +77,11 @@
 
 #sidebar ul {
   list-style-type: none;
+  padding-left: 0;
+}
+
+#sidebar ul a {
+  margin-bottom: 5px;
 }
 
 ul {
@@ -80,13 +90,31 @@ ul {
 
 .content {
   display: inline-block;
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.list-group-item {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 50px;
 }
 
 .ideas-list-buttons {
   float: right;
 }
 
+.idea-title {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.list-button {
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+  margin-right: 10px;
+}
+
 .ideas-list-search {
   float: right;
- } 
+ }

@@ -5,6 +5,8 @@
  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
  <%= csrf_meta_tags %>
+ <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <div class="main-container">
@@ -32,29 +34,42 @@
     <div id="sidebar" class="col-md-2">
      <div>
        <ul>
-         <li><%#= link_to "Pinned", user_pins_path(current_user),
+         <li><%= link_to "Pinned", pins_path,
            class: "btn btn-default" %></li>
          <li><%= link_to "Created by me", ideas_path,
            class: "btn btn-default" %></li>
-         <li><%= link_to "Shared with me", users_path,
+         <li><%= link_to "Shared with me", shared_ideas_path,
            class: "btn btn-default" %></li>
        </ul>
      </div>
 
      <div class="sidebar-teams">
-       Teams
-       <ul>
-         <li><%= link_to "Team1", users_path, class: "btn btn-default" %></li>
-         <li><%= link_to "Team2", users_path, class: "btn btn-default" %></li>
-       </ul>
+      <%# DROPDOWN MENU FOR TEAM LIST -------------------------- %>
+       <div class="dropdown">
+          <button type="button" class="btn btn-default dropdown-toggle button-full" data-toggle="dropdown"> 
+              My Teams<span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dLabel">
+                  <% current_user.teams.each do |team| %>
+                    <%# show each team tile, truncated at 30 chars max %>
+                    <li><%= link_to truncate(team.name, length: 30), team_path(team) %></li>
+                  <% end %>
+                </ul>
+        <%# clsoe dropdown %>
+        </div>
      </div>
+     <br>
+     <br>
 
       <div>
-        <%= link_to users_path, class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-plus">  New Team</i>
-        <% end %>
+        <!-- Button trigger new team modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Create A New Team
+        </button>
+        <br>
       </div>
-    </div>
+      
+  </div>
+
 
 
     <div class="content col-md-10">
@@ -70,5 +85,34 @@
     </div>
 
  </div>
+
+ <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </body>
+
+
+<!-- Modal to Create A New Team -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create A New Team</h4>
+      </div>
+      <div class="modal-body">
+        <%# partial to create a new team %>
+        <%= render partial: "/teams/teams_form" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 </html>
