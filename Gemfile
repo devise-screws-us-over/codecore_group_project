@@ -36,6 +36,10 @@ gem 'font-awesome-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# for interpretting markdown
+gem 'redcarpet', '~> 3.0.0'
+
+gem 'coderay'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
