@@ -3,21 +3,26 @@
     <h1>My Ideas</h1>
   </div>
 
-  <div class="content-element">
+<!-- DELETED THIS PLACEHOLDER -->
+<!--   <div class="content-element">
     <div class="content">
-      search
+      <%#= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
     </div>
-    <div class="content">
-      <%= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
-    </div>
-  </div>
+  </div> -->
+
 </div>
 
 <div class="content col-md-12">
+<<<<<<< HEAD
+  <!-- Field for filtering ideas: -->
+    <%= render partial: "/layouts/filter" %>
+  <ul class="list-group" id="ideas">
+=======
   <ul class="list-group">
     <% if @ideas.count == 0 %>
       <h2>Create Your First Idea using the + sign on the top right!</h2>
     <% else %>
+>>>>>>> a782768abc641b726181f835c5315cd39a280c95
     <% @ideas.each do |idea| %>
         <li class="list-group-item">       
 
@@ -50,6 +55,3 @@
   </ul>
   <% end %>
 </div>
-
-
-

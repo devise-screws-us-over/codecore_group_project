@@ -49,6 +49,8 @@ gem 'best_in_place'
 gem 'responders'
 gem 'puma'
 
+gem 'jquery-turbolinks'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
