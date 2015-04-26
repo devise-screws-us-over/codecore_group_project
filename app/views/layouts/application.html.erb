@@ -7,34 +7,27 @@
  <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <div id="header" class="col-md-12">
+  <div class="main-container">
+    <div class="header" class="col-md-12">
 
-      <div id="header-logo" class="col-md-3">
+      <div class="header-logo" class="col-md-3">
           <h1><%= link_to "Ideaz", root_path %></h1>
       </div>
 
-      <div id="header-buttons" class="btn-group col-md-3">
-          <%= link_to new_idea_path, class: "header-btn-default" do %>
+      <div class="header-buttons" class="btn-group col-md-3">
+          <%= link_to new_idea_path, class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-plus"></i>
           <% end %>
-          <%# link_to profile_path(@user.profile), class: "header-btn-default" do %>
+          <%= link_to users_path, class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-cog"></i>
-          <%# end %>
-          <%= link_to sessions_path, method: :delete, class: "header-btn-default" do %>
+          <% end %>
+          <%= link_to sessions_path, method: :delete, class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-log-out"></i>
           <% end %>
       </div>
     </div>
 
-     <div id="header-buttons" class="col-md-3">
-       <span class="glyphicon glyphicon-plus"></span>
-       <span class="glyphicon glyphicon-cog"></span>
-       <span class="glyphicon glyphicon-log-out"></span>
-     </div>
-   </div>
-
-   <div id="sidebar" class="col-md-2">
+    <div id="sidebar" class="col-md-2">
      <div>
        <ul>
          <li><%# link_to "Pinned", user_pins_path(current_user),
@@ -72,7 +65,6 @@
 
       <%# -- Main Content ------------------------------------------ %>
       <%= yield %>
-      <%= link_to "Logout", sessions_path, method: :delete %>
     </div>
 
  </div>

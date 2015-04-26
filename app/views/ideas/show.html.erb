@@ -1,25 +1,44 @@
-<h1><%= @idea.title %></h1>
-<br>
- <%= @idea.body %>
- <br>
- <%= link_to "Edit Your Idea", edit_idea_path(@idea) %>
- <br>
-<%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
- <br>
+<div class="container col-md-12">
+  <div class="content">
+    <button type="button" class="btn btn-lg">
+      <%= link_to ideas_path do %>
+        <i class="glyphicon glyphicon-menu-left"></i>
+      <% end %>
+    </button>
+  </div>
+  <div class="content"><h1><%= @idea.title %></h1></div>
+  <div class="content">
+    <% pin = @idea.pins.find_by_user_id(current_user.id) %>
+      <% if pin %>
+        <%= link_to "Unpin", idea_pin_path(@idea, pin), method: :delete %>
+      <% else %>
+        <%= link_to "Pin Idea", idea_pins_path(@idea), method: :post %>
+    <% end %>
+  </div>
+  <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+</div>
 
-  
-<% pin = @idea.pins.find_by_user_id(current_user.id) %>
-  <% if pin %>
-    <%= link_to "Unpin", idea_pin_path(@idea, pin), method: :delete %>
-  <% else %>
-    <%= link_to "Pin Idea", idea_pins_path(@idea), method: :post %>
-<% end %>
+<div>
+  Created by <%= @idea.user.full_name %>
+  <p><%= @idea.body %></p>
+  <%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
+</div>
 
- <% @idea.comments.each do |comment| %>
- <%= comment.body %>
- <%# comment.user.full_name %>
- <%# comment.gravitor %>
- <%= comment.created_at %>
-<% end %>
+<div>
+  <br>
+  <%#= link_to "Pin Idea", user_pins_path, method: :post %>
+  <% @idea.comments.each do |comment| %>
+    <ul>
+      <li>
+        <%# comment.gravitor %>
+        <p><%= comment.body %></p>
+        <%= link_to comment.user.full_name, user_path %> | 
+        <%= comment.created_at %>
+      </li>
+    </ul>
+  <% end %>
+</div>
 
-<%= render partial: "/comments/comment" %>
+<div>
+  <%= render partial: "/comments/comment" %>
+</div>
