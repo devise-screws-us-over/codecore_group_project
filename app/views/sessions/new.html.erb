@@ -1,9 +1,14 @@
-<%= simple_form_for "", url: sessions_path, method: :post do |f| %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.submit "Sign In" %>
-  <br>
-<% end %>
-<%= link_to "Not A Member Yet?", new_user_path %>
-<br>
-<%= link_to "Forgot Your Password", "" %>
+<div class="centered-login">
+  <div class="ideaz-logo">
+    <span class="fa fa-lightbulb-o fa-5x"></span>
+  </div>
+  <h1>Welcome to Ideaz</h1>
+  <%= simple_form_for "", url: sessions_path, method: :post do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.submit "Log In" %>
+    <br>
+  <% end %>
+  <span style="float:left"><%= link_to "Not A Member Yet?", new_user_path %></span>
+  <span style="float:right"><%= link_to "Forgot Your Password", "" %></span>
+</div>

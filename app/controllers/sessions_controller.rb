@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  layout "external"
+
   def new
   end
 

@@ -18,7 +18,7 @@
           <%= link_to new_idea_path, class: "header-btn-default btn-lg" do %>
             <i class="glyphicon glyphicon-plus"></i>
           <% end %>
-          <% if current_user %>
+          <% if current_user.profile %>
             <%= link_to edit_profile_path(current_user.profile), class: "header-btn-default btn-lg" do %>
               <i class="glyphicon glyphicon-cog"></i>
             <% end %>
@@ -32,7 +32,7 @@
     <div id="sidebar" class="col-md-2">
      <div>
        <ul>
-         <li><%= link_to "Pinned", pins_path,
+         <li><%#= link_to "Pinned", user_pins_path(current_user),
            class: "btn btn-default" %></li>
          <li><%= link_to "Created by me", ideas_path,
            class: "btn btn-default" %></li>
