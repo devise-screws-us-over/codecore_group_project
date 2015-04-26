@@ -21,7 +21,7 @@
 </div>
 
 <div>
-  Created by <%= @idea.user.full_name %>
+  Created by <%= link_to @idea.user.full_name, @idea.user.profile %>
   <p><%= markdown(@idea.body) %></p>
   <%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
 </div>
