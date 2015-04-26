@@ -29,7 +29,14 @@
         <span>&nbsp;</span>
         <span><%= link_to idea.title, idea %></span>
 
-        <%= render partial: "/teams/share", locals: {idea: idea} %>
+
+        <!-- Button trigger to share idea with a team -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#shareModal">
+          Share
+        </button>
+
+        <!-- Modal to Share An Idea with A Team (hidden)-->
+        <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
         <br>
 
         <span class="ideas-list-buttons">
@@ -41,3 +48,6 @@
     </ul>
   <% end %>
 </div>
+
+
+
