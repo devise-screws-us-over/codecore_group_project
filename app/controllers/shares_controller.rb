@@ -1,7 +1,6 @@
 class SharesController < ApplicationController
 
  def create
-
    @idea           = Idea.find params[:idea_id]
    teams           = params["share"]["team_ids"] 
 
@@ -24,4 +23,12 @@ class SharesController < ApplicationController
       # end
     end
   end
+
+  def shared_ideas
+    #going to iterate over the users teams to be able
+    #to get at all of the ideas they have
+    @teams = current_user.teams.all
+  end
+
+
 end
