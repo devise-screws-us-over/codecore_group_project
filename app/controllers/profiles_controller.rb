@@ -35,6 +35,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @ideas = current_user.ideas.all
   end
 
   private
