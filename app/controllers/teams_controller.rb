@@ -25,6 +25,7 @@ class TeamsController < ApplicationController
   def edit
     @team = Team.find(params[:id])
     @members = @team.members
+    redirect_to root_path, alert: "access denied" unless can? :manage, @team
     @invitation = Invitation.new
   end
 
@@ -35,6 +36,7 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
+    redirect_to root_path, alert: "access denied" unless can? :manage, @team
     if @team.update(team_params)
       redirect_to edit_team_path(@team)
     else

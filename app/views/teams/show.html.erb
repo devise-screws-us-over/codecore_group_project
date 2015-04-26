@@ -15,6 +15,8 @@
     <% end %>
   </ul>
 
+  <%# extra layer of protection from CanCanCan %>
+  <% if can? :edit, @team %>
   <button class="button">
     <% if current_user == @team.owner %>
       <%= link_to "Manage", edit_team_path %>
@@ -22,6 +24,7 @@
       <%= link_to "Leave Team", ideas_path %>
     <% end %>
   </button>
+  <% end %>
 
   <input id="filter-library" />
 
