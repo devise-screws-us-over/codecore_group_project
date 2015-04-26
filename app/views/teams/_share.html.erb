@@ -1,4 +1,5 @@
-<%= form_for Share.new, url: idea_shares_path(idea), method: :post do |f| %>
+<%= simple_form_for Share.new, url: idea_shares_path(idea), method: :post do |f| %>
   <%= f.collection_check_boxes :team_ids, current_user.teams, :id, :name %>
-  <%= f.submit %>
+  <br>
+  <%= f.submit "Share With These Groups", class: "btn btn-success" %>
 <% end %>
