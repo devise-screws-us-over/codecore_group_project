@@ -2,7 +2,7 @@ class SharesController < ApplicationController
 
  def create
    @idea           = Idea.find params[:idea_id]
-   teams           = params["share"]["team_ids"] 
+   teams           = params["share"]["team_ids"]
 
    if @idea && teams && teams.count > 1 
       teams.each do |team|
