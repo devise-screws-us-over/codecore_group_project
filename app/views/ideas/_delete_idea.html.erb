@@ -1,0 +1,7 @@
+<% if can? :delete, idea %>
+  <% if idea.user == current_user %>
+    <%= link_to "", idea_path(idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"}, remote: true, class: "btn btn-lg fa fa-trash-o" %>
+  <% end %>
+<% end %>
+
+  

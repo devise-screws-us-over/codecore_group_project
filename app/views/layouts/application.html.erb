@@ -40,6 +40,8 @@
            class: "btn btn-default" %></li>
          <li><%= link_to "Shared with me", shared_ideas_path,
            class: "btn btn-default" %></li>
+         <li><%= link_to "My Teams", teams_path,
+           class: "btn btn-default" %></li>
        </ul>
      </div>
 
@@ -51,7 +53,7 @@
                 <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dLabel">
                   <% current_user.teams.each do |team| %>
                     <%# show each team tile, truncated at 30 chars max %>
-                    <li><%= link_to truncate(team.name, length: 30), team_path(team) %></li>
+                    <li><%= link_to truncate(team.name, length: 30), team_path(team.id) %></li>
                   <% end %>
                 </ul>
         <%# clsoe dropdown %>
