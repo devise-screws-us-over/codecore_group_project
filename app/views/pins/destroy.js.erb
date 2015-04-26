@@ -1,1 +1,1 @@
-$('.pin').html("<%= j render partial: "/pins/pin", locals: {idea: @idea} %>");
+$('#<%= dom_id(@idea) %>').html("<%= j render partial: "/pins/pin", locals: {idea: @idea} %>");

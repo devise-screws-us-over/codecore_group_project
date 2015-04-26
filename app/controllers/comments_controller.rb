@@ -6,9 +6,13 @@ class CommentsController < ApplicationController
     @comment.idea = @idea
 
     if @comment.save
-      redirect_to idea_path(@idea), notice: "Comment Successfully Created"
+      respond_to do |format|
+        format.html { redirect_to idea_path(@idea), notice: "Comment Successfully Created" }  
+        format.js { render }
+      end   
     else
-      render "ideas/show"
+      format.html { render "ideas/show" }
+      format.js   { render }
     end
   end
 
