@@ -1,6 +1,32 @@
-<h1>Welcome To Ideaz!!</h1>
+<div class="content col-md-12"> 
+  <div class="content">
+    <h1>My Ideas</h1>
+  </div>
 
-<% @ideas.each do |idea| %>
-  <%= idea.title %>
-  <br>
-<% end %>
+  <div class="content-element">
+    <div class="content">
+      search
+    </div>
+    <div class="content">
+      <%= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
+    </div>
+  </div>
+</div>
+
+<div class="content col-md-12">
+  <% @ideas.each do |idea| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-pushpin"></span></button>
+        <span>&nbsp;</span>
+        <span><%= link_to idea.title, idea %></span>
+        <span class="ideas-list-buttons">
+        <button type="button" class="btn btn-lg">
+          <span class="fa fa-users fa-2x"></span></button>
+        <button type="button" class="btn btn-lg">
+          <span class="fa fa-trash-o fa-2x"></span></button></span>
+      </li>
+    </ul>
+  <% end %>
+</div>
