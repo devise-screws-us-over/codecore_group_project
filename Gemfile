@@ -41,10 +41,14 @@ gem 'bcrypt', '~> 3.1.7'
 # for interpretting markdown
 gem 'redcarpet', '~> 3.0.0'
 
+# for editing fields in place
+
 gem 'coderay'
 
 gem 'best_in_place'
 gem 'responders'
+gem 'puma'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

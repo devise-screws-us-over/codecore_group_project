@@ -3,11 +3,7 @@ class IdeasController < ApplicationController
     respond_to :html, :json
 
   def index
-    if current_user
       @ideas = current_user.ideas.all
-    else
-      @ideas = Idea.all
-    end
   end
 
 
@@ -34,6 +30,7 @@ class IdeasController < ApplicationController
 
   def edit
     @idea = current_user.ideas.find(params[:id])
+    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
   end
 
 
@@ -56,8 +53,13 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea = current_user.ideas.find(params[:id])
-    @idea.destroy
-    redirect_to root_path
+    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
+
+    respond_to do |format|
+      @idea.destroy
+      format.html { redirect_to root_path }
+      format.js { render }
+    end
   end
 
 

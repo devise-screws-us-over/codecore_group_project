@@ -3,6 +3,8 @@
   <br>
 <% end %>
 
+<%= best_in_place @idea, :title, :as => :text_area %>
+
 <%= simple_form_for @idea do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, class: "form-control" %>

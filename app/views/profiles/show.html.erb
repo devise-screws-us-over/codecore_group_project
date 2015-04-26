@@ -1,16 +1,25 @@
-<div>
-  <h1>My Profile</h1>
+<div class="content col-md-12">
+  <div class="content">
+    <h1><%= @profile.user.full_name %></h1>
+  </div>
 </div>
-<%= image_tag avatar_url(@profile) %>
 
-<%= @profile.user.full_name %>
-<br>
-<%= @profile.bio %>
-<br>
-<%= @profile.handle %>
-<br>
-<%= @profile.facebook %>
-<br>
-<%= @profile.twitter %>
-<br>
-<%= @profile.github %>
+<div class="container col-md-12">
+  <div class="container col-md-3">
+    <%= image_tag avatar_url(@profile) %>
+  </div>
+
+  <div class="container col-md-9">
+  <%= @profile.bio %>
+  </div>
+</div>
+<div class="container col-md-12">
+  <div class="container col-md-3">
+    <%= @profile.handle %>
+  </div>
+  <div class="container col-md-9">
+    <%= link_to "Facebook", @profile.facebook %>
+    <%= link_to "Twitter", @profile.twitter %>
+    <%= link_to "Github", @profile.github %>
+  </div>
+</div>

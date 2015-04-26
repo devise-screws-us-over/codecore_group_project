@@ -10,10 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
- *= require jquery-ui
+ *= require jquery-ui/sortable
  *= require_tree .
  *= require_self
  */
+
+.green a {
+  color: green;
+}
 
 .header {
   position: relative;
@@ -69,6 +73,20 @@
   background-color: #000;
 }
 
+.pin {
+  display: inline-block;
+  width: 62px;
+  height: 51px;
+}
+
+.pin-button {
+  display: inline-block;
+  width: 62px;
+  height: 51px;
+  text-align: center;
+  padding: 11px;
+}
+
 #sidebar {
   text-align: left;
   padding-top: 50px;
@@ -91,6 +109,14 @@ ul {
 .content {
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
+}
+
+.list-group-item:first-child {
+  border-radius: 50px;
+}
+
+.list-group-item:last-child {
+  border-radius: 50px;
 }
 
 .list-group-item {

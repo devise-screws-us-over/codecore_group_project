@@ -18,7 +18,10 @@
         <i class="glyphicon glyphicon-pushpin" style="color:green"></i><% end %>
       <% end %>
   </div>
-  <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+  <%#--from CANCANCAN ----------- %>
+  <% if can? :edit, @idea %>
+    <div class="content"><%= link_to " Edit", edit_idea_path(@idea), class: "btn btn-default fa fa-pencil" %></div>
+  <% end %>
 </div>
 
   <div>
