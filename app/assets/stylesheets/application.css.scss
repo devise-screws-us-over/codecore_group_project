@@ -111,6 +111,14 @@ ul {
   font-family: 'Montserrat', sans-serif;
 }
 
+.list-group-item:first-child {
+  border-radius: 50px;
+}
+
+.list-group-item:last-child {
+  border-radius: 50px;
+}
+
 .list-group-item {
   padding: 5px;
   margin: 10px;
