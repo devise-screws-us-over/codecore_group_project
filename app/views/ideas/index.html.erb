@@ -15,6 +15,9 @@
 
 <div class="content col-md-12">
   <ul class="list-group">
+    <% if @ideas.count == 0 %>
+      <h2>Create Your First Idea using the + sign on the top right!</h2>
+    <% else %>
     <% @ideas.each do |idea| %>
         <li class="list-group-item">       
 
@@ -50,6 +53,7 @@
         </li>
     <% end %>
   </ul>
+  <% end %>
 </div>
 
 
