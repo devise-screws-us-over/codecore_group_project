@@ -7,7 +7,7 @@
   <ul id="ideas">
     <% @ideas.order("title").each do |idea| %>
       <li>
-      <%= link_to idea.title, ideas_path %>
+      <%= link_to idea.title, idea_path %>
       <!-- Need to change on 'team.rb' : Order with the most active idea first -->
       <!-- Need to change here : Idea to Piined list -->
       </li>
