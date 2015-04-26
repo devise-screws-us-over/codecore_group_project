@@ -13,9 +13,8 @@ class InvitationsController < ApplicationController
       @invitation.team = @team
       @invitation.recipient = email
       @invitation.user = current_user
-      @invitation.key = SecureRandom.hex
+      @invitation.key = SecureRandom.hex(5)
 
-      # This breaks if I use "email" instead of "@invitation.recipient"
       if User.find_by_email(email)
         @invitation.has_account = true
       else
