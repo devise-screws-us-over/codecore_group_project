@@ -15,18 +15,20 @@ class InvitationsController < ApplicationController
       @invitation.user = current_user
       @invitation.key = SecureRandom.hex
 
-      # This breaks if I use "email" instead of "@invitation.recipient"
       if User.find_by_email(email)
         @invitation.has_account = true
       else
         @invitation.has_account = false
       end
 
-      @invitation.save
-      # In case the randomly-generated string is not unique, append the Invitation ID 
-      @invitation.key = "#{@invitation.key}#{@invitation.id}"
-      @invitation.save
-      InviteMailer.invite_by_email(@invitation).deliver
+      if @invitation.save
+        # In case the randomly-generated string is not unique, append the Invitation ID 
+        @invitation.key = "#{@invitation.key}#{@invitation.id}"
+        @invitation.save
+        InviteMailer.invite_by_email(@invitation).deliver
+      else
+        flash[:alert] = "One or more of your email addresses cannot be added to our invitation list"
+      end
     end
     redirect_to edit_team_path(@team)
   end

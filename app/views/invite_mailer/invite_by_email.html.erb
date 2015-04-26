@@ -10,7 +10,8 @@
 <p>Please click the link below to join the team</p>
 
 <!-- Pass the invitation key in the URL query string -->
-<p><%= link_to "Click here to join", team_url(@invitation.team, key_match: @invitation.key), :key_match => @invitation.key, target: '_blank' %></p>
+<p><%= link_to "Click here to join", team_url(@invitation.team, key_match: @invitation.key.to_s), target: '_blank' %></p>
+<!-- , :key_match => @invitation.key -->
 
 <p>Regards,</p>
 <br>The Ideaz Team

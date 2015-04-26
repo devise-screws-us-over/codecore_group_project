@@ -15,7 +15,7 @@ class InviteMailer < ApplicationMailer
       @last_name = User.find_by_email(@invitation.recipient).last_name
     end
 
-    mail(to: @invitation.recipient, subject: "You are invited to join Team #{@invitation.team.name}")
+    mail(to: @invitation.recipient, subject: "You are invited to join Team \"#{@invitation.team.name}\"")
      # do |format| format.html.erb { render layout: 'mailer'} end
   end
 

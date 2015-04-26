@@ -29,9 +29,24 @@ class TeamsController < ApplicationController
   end
 
   def show
+    # If the key exists in the params hash
     if params[:key_match]
-      @key_match = params[:key_match]
-      flash[:notice] = "You have successfully joined this team!"
+      # Find the Invitation ActiveRecord
+      @invitation = Invitation.find_by_key(params[:key_match])
+      # Find the User ActiveRecord
+      @invitee_email = @invitation.recipient
+      @invitee_user = User.find_by_email(@invitee_email)
+      # Find the Team ActiveRecord
+      @team_id = @invitation.team
+      @invitation_team = Team.find(@team_id)
+      # If the invitee was NOT accepted the invitation
+      if @invitation.accepted != true
+        flash[:notice] = "You have successfully joined this team!"
+        @invitation.accepted = true
+        # SQL FOR CREATE MEMBERSHIP
+        @membership = Membership.create(user_id: @invitee_user.id, team_id: @team_id.id )
+      # If the invitee has ALREADY accepted the invitation
+      end
     end
 
     @team = Team.find(params[:id])
