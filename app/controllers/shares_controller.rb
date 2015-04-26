@@ -1,15 +1,27 @@
-class ProfilesController < ApplicationController
+class SharesController < ApplicationController
 
  def create
-   @idea           =Idea.find params[:idea_id]
-   @share          =@idea.shares.new
-   @share.idea     =@idea
+
+   @idea           = Idea.find params[:idea_id]
+   teams           = params["share"]["team_ids"] 
+
+   if @idea && teams && teams.count > 1 
+      teams.each do |team|
+        if !team.blank?
+          Share.create(team_id: team, idea_id: @idea.id)
+        end
+      end
+  else
+    error = "yourmissing something"
+  end
+  #  @share.team     = team
+  #  @share          = @idea.shares.new
+  #  @share.idea     = @idea
+
    respond_to do |format|
-     if @share.save
-       format.html {redirect_to @idea, notice: "Successfully Shared"}
-     else
-       format.html {redirect_to @idea, alert: "Not Shared"}
-     end
-   end
- end
+      # if error
+        format.html {redirect_to @idea, notice: "Successfully Shared"}
+      # end
+    end
+  end
 end

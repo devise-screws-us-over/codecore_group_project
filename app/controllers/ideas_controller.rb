@@ -2,7 +2,11 @@ class IdeasController < ApplicationController
     before_action :authenticate_user!
 
   def index
-    @ideas = current_user.ideas.all
+    if current_user
+      @ideas = current_user.ideas.all
+    else
+      @ideas = Idea.all
+    end
   end
 
 
@@ -55,9 +59,8 @@ class IdeasController < ApplicationController
 
 
   def idea_params
-    params.require(:idea).permit(:title, :body)
+    params.require(:idea).permit(:title, :body, {team_ids: []})
   end
-
 
 
 end
