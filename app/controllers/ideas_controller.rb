@@ -55,9 +55,8 @@ class IdeasController < ApplicationController
 
 
   def idea_params
-    params.require(:idea).permit(:title, :body)
+    params.require(:idea).permit(:title, :body, {team_ids: []})
   end
-
 
 
 end

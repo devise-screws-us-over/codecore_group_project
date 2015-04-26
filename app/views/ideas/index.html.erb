@@ -21,6 +21,10 @@
           <span class="glyphicon glyphicon-pushpin"></span></button>
         <span>&nbsp;</span>
         <span><%= link_to idea.title, idea %></span>
+
+        <%= render partial: "/teams/share", locals: {idea: idea} %>
+        <br>
+
         <span class="ideas-list-buttons">
         <button type="button" class="btn btn-lg">
           <span class="fa fa-users fa-2x"></span></button>
