@@ -9,11 +9,16 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.new(team_params)
+    @team = current_user.teams.new(team_params)
+    #this will assign the user who made the team to the team owner
+    @team.owner = current_user
     if @team.save
+      #Create a membership to assign this user to that
+      #specific team so they don't need an invite
+      membership = Membership.create(user_id: @team.owner.id, team_id: @team.id)
       redirect_to @team
     else
-      render 'new'
+      redirect_to root_path
     end
   end
 

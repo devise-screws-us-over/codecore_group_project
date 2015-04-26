@@ -1,0 +1,8 @@
+<div class="team-create-modal-container">
+  <%= form_for Team.new do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+    <br>
+    <%= f.submit "Create New Team", class: "btn btn-primary" %>
+  <% end %>
+</div>
