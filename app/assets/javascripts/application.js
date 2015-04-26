@@ -11,18 +11,31 @@
 // about supported directives.
 //
 //= require jquery
-//= require best_in_place
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-ui
+//= require best_in_place
 //= require jquery-ui/sortable
+//= require jquery.purr
+//= require best_in_place
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require turbolinks
 //= require_tree .
+
 
 $(document).ready(function(){
 
   $(function() {
     $('.list-group').sortable();
   });
+
+  // Function for filtering pins
+  $('#filter-library').change(function(){
+      var filter = $('#filter-library').val();
+      $("#ideas li:not(:contains('"+filter+"'))").hide();
+      $("#ideas li:contains('"+filter+"')").show();
+    }).keyup(function() {
+        $(this).change();
+    });
 
 });

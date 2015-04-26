@@ -42,9 +42,15 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'redcarpet', '~> 3.0.0'
 
 # for editing fields in place
-gem 'best_in_place', '~> 3.0.1'
 
 gem 'coderay'
+
+gem 'best_in_place'
+gem 'responders'
+gem 'puma'
+
+gem 'jquery-turbolinks'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -65,8 +71,8 @@ group :development, :test do
 
   gem 'interactive_editor'
 
-  gem 'awesome_print'
-
+  gem 'awesome_print'  
+  
   gem 'faker'
 
   gem 'letter_opener'

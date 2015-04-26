@@ -1,12 +1,9 @@
 class IdeasController < ApplicationController
     before_action :authenticate_user!
+    respond_to :html, :json
 
   def index
-    if current_user
       @ideas = current_user.ideas.all
-    else
-      @ideas = Idea.all
-    end
   end
 
 
@@ -25,7 +22,6 @@ class IdeasController < ApplicationController
     end  
   end
 
-
   def show
     @idea = Idea.find(params[:id])   
     @comment = Comment.new
@@ -40,21 +36,30 @@ class IdeasController < ApplicationController
 
   def update
     @idea = current_user.ideas.find(params[:id])
-    redirect_to root_path, alert: "access denied" unless can? :manage, @idea
-    if @idea.update(idea_params)
-      redirect_to @idea, notice: "Idea Updated Successfully!"
-    else
-      render :edit
-      flash[:alert] = "Idea not updated"
-    end
+    @idea.update(idea_params)
+      respond_with @idea
   end
+  
+  # def update
+  #   @idea = current_user.ideas.find(params[:id])
+  #   if @idea.update(idea_params)
+  #     redirect_to @idea, notice: "Idea Updated Successfully!"
+  #   else
+  #     render :edit
+  #     flash[:alert] = "Idea not updated"
+  #   end
+  # end
 
 
   def destroy
     @idea = current_user.ideas.find(params[:id])
     redirect_to root_path, alert: "access denied" unless can? :manage, @idea
-    @idea.destroy
-    redirect_to root_path
+
+    respond_to do |format|
+      @idea.destroy
+      format.html { redirect_to root_path }
+      format.js { render }
+    end
   end
 
 

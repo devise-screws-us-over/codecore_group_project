@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
- *= require jquery-ui
+ *= require jquery-ui/sortable
  *= require_tree .
  *= require_self
  */
@@ -144,3 +144,7 @@ ul {
 .ideas-list-search {
   float: right;
  }
+
+#field-filter {
+  text-align: right;
+}
