@@ -10,6 +10,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+
+      # If there is a pending invitation with the new user's email address
+      if Invitation.find_by_recipient(@user.email)
+        invitation = Invitation.find_by_recipient(@user.email)
+        membership = Membership.create(user_id: @user.id, team_id: invitation.team.id)
+      end
+
       redirect_to new_profile_path, notice: "Account Created. Please Create Your Profile!"
     else
       render :new
