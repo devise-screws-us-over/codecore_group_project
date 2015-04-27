@@ -28,9 +28,19 @@ class UsersController < ApplicationController
 
 
   def update
-    # @user = current_user
-    # @user.update(user_params)
-    # redirect_to profile_path
+
+    if current_user
+      @user = current_user
+       if @user.update(user_params)
+        redirect_to profile_path(@user.profile), notice: "Password updated"
+      else
+        redirect_to profile_path(@user.profile), alert: "Password not updated"
+      end
+    else 
+      @user = User.find(params[:id])
+      @user.update(user_params)
+      redirect_to new_session_path, notice: "Password updated"
+    end  
   end
 
 
@@ -40,6 +50,14 @@ class UsersController < ApplicationController
 
   def delete
     @user = User.find(params[:id])    
+  end
+
+  def forgot_password
+    @email = params[:email]
+  end
+
+  def send_password
+    @email = params[:email]
   end
 
   private

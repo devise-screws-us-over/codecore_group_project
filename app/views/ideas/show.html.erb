@@ -24,19 +24,23 @@
   <% end %>
 </div>
 
+<div class="container col-md-12">
   <div>
     Created by <%= @idea.user.full_name %>
   </div>
   <div>
   <%= best_in_place @idea, :body, display_with: lambda { |t| markdown(t)}, as: :textarea %>
   </div>
- <%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
-</div>
+   <%= button_to "Delete Idea", idea_path(@idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"} %>
+  </div>
 
-<div class="comments">
-  <%= render partial: "/comments/all_comment" %>
-</div>
+  <div>
+    <div class="comments">
+      <%= render partial: "/comments/all_comment" %>
+    </div>
 
-<div class="comment_form">
-  <%= render partial: "/comments/comment" %>
+    <div class="comment_form">
+      <%= render partial: "/comments/comment" %>
+    </div>
+  </div>
 </div>

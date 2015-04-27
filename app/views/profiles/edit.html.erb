@@ -37,10 +37,32 @@ Social Links
   <div style="float:left"> 
     <%= f.submit %>
   </div>
-
-  <div style="float:right">
-    <%= f.submit %>
-  </div>
+<% end %>
+  <button type="button" style="float:right" data-toggle="modal" data-target="#passwordModal">
+    Change Password
+  </button>
 </div>
 
-<% end %>
+<!-- Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+      </div>
+      <div class="invite-new">
+        <!-- CURRENTLY USING @team AS A PLACEHOLDER -->
+          <%= simple_form_for [@profile.user], method: :patch do |f| %>
+          Enter new password below:
+          <%= f.input :password %>
+          <%= f.input :password_confirmation %>
+          <%= f.submit "Update Password" %>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
