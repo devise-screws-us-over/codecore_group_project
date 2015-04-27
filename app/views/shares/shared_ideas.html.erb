@@ -28,10 +28,11 @@
               <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= idea.user.full_name %> Shared through: <%= share_team %>">
                 <%= link_to image_tag(avatar_url(idea.user.profile)), profile_path(idea.user.profile) %>
               </div>
+              </li>
             <% end %>
         <% end %>
       <% end %>
-    </li>
+
   <% end %>
   </ul>
 </div>    
