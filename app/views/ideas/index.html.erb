@@ -1,4 +1,4 @@
-<div class="content col-md-12"> 
+<div class="content col-md-12 col-sm-12"> 
   <div class="content">
     <h1>My Ideas</h1>
   </div>
@@ -13,9 +13,9 @@
 </div>
 
 <div class="content col-md-12">
-<!-- <<<<<<< HEAD -->
   <!-- Field for filtering ideas: -->
-    <%= render partial: "/layouts/filter" %>
+  <%= render partial: "/layouts/filter" %>
+
   <ul class="list-group" id="ideas">
     <% if @ideas.count == 0 %>
       <h2>Create Your First Idea using the + sign on the top right!</h2>
