@@ -26,6 +26,14 @@
     <li><div><%= image_tag avatar_url(member.profile) %>
       <br>
       <%= member.first_name %> <%= member.last_name %></div></li>
+
+      <!-- If the team member is not the owner of this team -->
+      <% if @team.owner.id != member.id %>
+        <% membership = member.memberships.find_by_team_id(@team) %>
+        <% link_text = "Remove #{member.first_name} #{member.last_name} from this team" %>
+        <li><%= link_to link_text, team_membership_path(@team, membership, :admin_delete => true), method: :delete, data: {confirm: "Are you sure?"} %></li>
+      <% end %>
+      <br>
   <% end %>
   </ul>
 </div>

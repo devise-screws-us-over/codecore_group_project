@@ -34,6 +34,18 @@
               <%= render partial: "/ideas/delete_pin_idea", locals: {pin: pin} %>
             </div>
 
+              <% idea_teams = pin.idea.teams %>
+              <% current_user_teams = current_user.teams %>
+              <% my_var = (idea_teams & current_user.teams) %>
+
+              <% share_team = !my_var.empty? ? my_var.last.name : nil %>
+            
+            <% if cannot? :edit, pin.idea %> 
+              <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= pin.idea.user.full_name %> Shared through: <%= share_team %>">
+                <%= link_to image_tag(avatar_url(pin.idea.user.profile)), profile_path(pin.idea.user.profile) %>
+              </div>
+              <% end %>
+            
           </div>
 
       </li>

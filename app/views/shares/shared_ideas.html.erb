@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="content col-md-12 col-sm-12"> 
   <div class="content">
     <h1>My Shared Ideas</h1>
@@ -7,6 +8,18 @@
 <div class="content col-md-12">
   <!-- Field for filtering ideas: -->
   <%= render partial: "/layouts/filter" %>
+=======
+<h1>My Shared Ideas</h1>
+
+<!-- Field for filtering ideas: -->
+<%= render partial: "/layouts/filter" %>
+<% @teams.each do |team| %>
+    <% team.shared_ideas.each do |idea| %>
+        <li><%= link_to idea.title, idea_path(idea) %></li>
+      <% end %>
+    </ul>
+<% end %>
+>>>>>>> 99587384c13e97bafab655f6a36417da5744f663
 
   <ul class="list-group" id="ideas">
     <% @teams.each do |team| %>
