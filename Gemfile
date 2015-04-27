@@ -51,6 +51,8 @@ gem 'puma'
 
 gem 'jquery-turbolinks'
 
+gem 'letter_open'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

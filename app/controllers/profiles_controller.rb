@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @profile.user = current_user
     if @profile.update(profile_params)
-      redirect_to profile_path(@profile), notice: "Profile Successfully Created"
+      redirect_to root_path, notice: "Profile Successfully Created"
     else
       render :edit
       flash[:alert] = "Profile Not Updated"
