@@ -16,7 +16,6 @@
           <div class="pin" id= "<%= dom_id(idea) %>">
             <%= render partial: "/pins/pin", locals: {idea: idea} %>
           </div>
-
           <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
         </li>
         <% end %>
