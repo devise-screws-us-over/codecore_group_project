@@ -25,7 +25,7 @@
   <%# --- Idea Body ------------ %>
   <div class="container col-md-12">
     <div>
-      Created by <%= @idea.user.full_name %>
+      Created by <%= link_to @idea.user.full_name, profile_path(@idea.user) %>
     </div>
     <div>
       <% if can? :edit, @idea %>

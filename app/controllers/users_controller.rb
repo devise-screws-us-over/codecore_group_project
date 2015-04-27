@@ -35,9 +35,9 @@ class UsersController < ApplicationController
     if current_user
       @user = current_user
        if @user.update(user_params)
-        redirect_to profile_path(@user.profile), notice: "Password updated"
+        redirect_to root_path, notice: "Password updated"
       else
-        redirect_to profile_path(@user.profile), alert: "Password not updated"
+        redirect_to edit_profile_path(@user.profile), alert: "Password not updated"
       end
     else 
       @user = User.find(params[:id])
