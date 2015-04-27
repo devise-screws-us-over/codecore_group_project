@@ -1,0 +1,17 @@
+<p>Hello 
+<%# If the recipient has a user account %>
+<% if @invitation.has_account == true %>
+  <%= @first_name %> <%= @last_name %>
+<% end %>,
+</p>
+
+<p><%= @user.first_name %> <%= @user.last_name%> has invited you to join the team "<%= @invitation.team.name %>" on Ideaz.com</p>
+
+<p>Please click the link below to join the team</p>
+
+<!-- Pass the invitation key in the URL query string -->
+<p><%= link_to "Click here to join", team_url(@invitation.team, key_match: @invitation.key.to_s), target: '_blank' %></p>
+<!-- , :key_match => @invitation.key -->
+
+<p>Regards,</p>
+<br>The Ideaz Team

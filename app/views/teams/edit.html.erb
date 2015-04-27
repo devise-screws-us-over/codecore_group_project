@@ -1,0 +1,72 @@
+<!-- PAGE 7 OF WIREFRAME -->
+<div class="container col-md-12">
+  <div class="content">
+    <button type="button" class="btn btn-lg">
+      <%= link_to team_path @team do %>
+        <i class="glyphicon glyphicon-menu-left"></i>
+      <% end %>
+    </button>
+  </div>
+  <div class="content"><h1>Managing <%= @team.name %></h1></div>
+</div>
+
+<!-- Show the edit form -->
+<div>
+  <%= simple_form_for @team do |f| %>
+    <%= f.input :name, label: 'Update team name:' %>
+    <%= f.submit :Save %>
+  <% end %>
+</div>
+
+<!-- List all the members of this team -->
+<div>
+  <p>Team Members</p>
+  <ul>
+  <% @members.each do |member| %>
+    <li><div><%= image_tag avatar_url(member.profile) %>
+      <br>
+      <%= member.first_name %> <%= member.last_name %></div></li>
+
+      <!-- If the team member is not the owner of this team -->
+      <% if @team.owner.id != member.id %>
+        <% membership = member.memberships.find_by_team_id(@team) %>
+        <% link_text = "Remove #{member.first_name} #{member.last_name} from this team" %>
+        <li><%= link_to link_text, team_membership_path(@team, membership, :admin_delete => true), method: :delete, data: {confirm: "Are you sure?"} %></li>
+      <% end %>
+      <br>
+  <% end %>
+  </ul>
+</div>
+
+<!-- START BUTTON AND MODAL FOR INVITING MEMBERS -->
+
+<!-- Implement this when "new_membership_path" is ready -->
+<%# link_to "Invite team members", new_membership_path, class: "btn btn-success" %>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Invite Team Members
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Invite Members to this Team</h4>
+      </div>
+      <div class="invite-new">
+        <!-- CURRENTLY USING @team AS A PLACEHOLDER -->
+        <%= simple_form_for [@team,@invitation], method: :post do |f| %>
+          Invite members by email address.
+          <p>Please separate each address by a comma</p>
+          <%= f.input :array, label: 'List of email addresses' %>
+          <%= f.submit "Send Invitations" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

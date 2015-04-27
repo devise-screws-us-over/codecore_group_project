@@ -1,0 +1,158 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require font-awesome
+ *= require jquery-ui/sortable
+ *= require_tree .
+ *= require_self
+ */
+
+.green a {
+  color: green;
+}
+
+.header {
+  position: relative;
+  height: 100px;
+  background: gray;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+}
+
+.header h1 a {
+  float: left;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: none;
+  color: black;
+}
+
+.header-logo {
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  float: left;
+  vertical-align: bottom;
+}
+
+.header-buttons {
+  margin: 25px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  float: right;
+  text-align: right;
+}
+
+.header-buttons li {
+  display: inline-block;
+}
+
+.content-element {
+  display: inline-block;
+  float: right;
+}
+
+.btn-lg {
+  background-color: transparent;
+}
+
+.btn btn-default {
+  background-color: #000;
+}
+
+.pin {
+  display: inline-block;
+  width: 62px;
+  height: 51px;
+}
+
+.pin-button {
+  display: inline-block;
+  width: 62px;
+  height: 51px;
+  text-align: center;
+  padding: 11px;
+}
+
+#sidebar {
+  text-align: left;
+  padding-top: 50px;
+  display: inline-block;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#sidebar ul a {
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.content {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.list-group-item:first-child {
+  border-radius: 50px;
+}
+
+.list-group-item:last-child {
+  border-radius: 50px;
+}
+
+.list-group-item {
+  padding: 5px;
+  margin: 10px;
+  border-radius: 50px;
+}
+
+.ideas-list-buttons {
+  float: right;
+}
+
+.idea-title {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.list-button {
+  display: inline-block;
+  float: left;
+  margin-top: 3px;
+  margin-right: 10px;
+}
+
+.list-button.avatar {
+  float: right;
+}
+
+.list-button.avatar img {
+  border-radius: 50%;
+}
+
+.ideas-list-search {
+  float: right;
+ }
+
+#field-filter {
+  text-align: right;
+}

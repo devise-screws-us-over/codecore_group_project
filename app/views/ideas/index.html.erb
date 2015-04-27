@@ -1,0 +1,54 @@
+<div class="content col-md-12 col-sm-12"> 
+  <div class="content">
+    <h1>My Ideas</h1>
+  </div>
+
+<!-- DELETED THIS PLACEHOLDER -->
+<!--   <div class="content-element">
+    <div class="content">
+      <%#= link_to " Manage", ideas_path, class: "btn btn-default fa fa-pencil" %>
+    </div>
+  </div> -->
+
+</div>
+
+<div class="content col-md-12">
+  <!-- Field for filtering ideas: -->
+  <%= render partial: "/layouts/filter" %>
+
+  <ul class="list-group" id="ideas">
+    <% if @ideas.count == 0 %>
+      <h2>Create Your First Idea using the + sign on the top right!</h2>
+    <% else %>
+    <% @ideas.each do |idea| %>
+        <li class="list-group-item">       
+
+          <div class="pin" id= "<%= dom_id(idea) %>">
+            <%= render partial: "/pins/pin", locals: {idea: idea} %>
+          </div>
+          
+          <span class="idea-title"><%= link_to idea.title, idea %></span>
+
+          <!-- Modal to Share An Idea with A Team (hidden)-->
+          <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
+
+        <% if can? :edit, idea %>
+          <div class="ideas-list-buttons">
+            <div class = "list-button">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= idea.id %>">
+                <span class="fa fa-users"></span>
+              </button>
+            </div>
+          <% end %>            
+               
+            <div class="list-button" id="idea-delete-btn-<%= idea.id %>">
+              <%= render partial: "/ideas/delete_idea", locals: {idea: idea} %>
+            </div>
+            
+          </div>
+
+        </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

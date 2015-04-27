@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,15 +29,27 @@ gem 'bootstrap-sass'
 
 gem 'friendly_id'
 
-gem 'gravatar-ultimate'
-
 gem 'cancancan', '~> 1.10'
 
 gem 'simple_form'
 
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# for interpretting markdown
+gem 'redcarpet', '~> 3.0.0'
+
+# for editing fields in place
+
+gem 'coderay'
+
+gem 'best_in_place'
+gem 'responders'
+gem 'puma'
+
+gem 'jquery-turbolinks'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -57,10 +71,12 @@ group :development, :test do
 
   gem 'interactive_editor'
 
-  gem 'awesome_print'
-
+  gem 'awesome_print'  
+  
   gem 'faker'
 
   gem 'letter_opener'
+
+
 end
 

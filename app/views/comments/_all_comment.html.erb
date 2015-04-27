@@ -1,0 +1,10 @@
+  <br>
+  <%#= link_to "Pin Idea", user_pins_path, method: :post %>
+  <% @idea.comments.each do |comment| %>
+    <div class="well">
+        <%# comment.gravitor %>
+        <p><%= markdown(comment.body) %></p>
+        <%= link_to comment.user.full_name, profile_path(comment.user.profile) %> |
+        <%= comment.created_at %>
+      </div>
+  <% end %>

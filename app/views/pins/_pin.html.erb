@@ -1,0 +1,12 @@
+<% pin = idea.pins.find_by_user_id(current_user.id) %>
+
+<% if pin %>
+<div class="pin-button green">
+  <%= link_to "", idea_pin_path(idea, pin), method: :delete, remote: true, class: "btn btn-lg glyphicon glyphicon-pushpin" %>
+</div>
+<% else %>
+  <div class="pin-button">
+    <%= link_to "", idea_pins_path(idea), method: :post, remote: :true, class: "btn btn-lg glyphicon glyphicon-pushpin" %>
+  </div>
+<% end %>
+  
