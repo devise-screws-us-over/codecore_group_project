@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   get "/shared_ideas" => "shares#shared_ideas"
 
   get "/forgot_password" => "users#forgot_password"
-  post "/forgot_password/:email" => "users#send_password"
+  post "/forgot_password" => "users#send_password"
 
 end

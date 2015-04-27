@@ -52,6 +52,7 @@ Social Links
         <h4 class="modal-title" id="myModalLabel">Change Password</h4>
       </div>
       
+
       <div class="invite-new">
         <!-- CURRENTLY USING @team AS A PLACEHOLDER -->
           <%= simple_form_for [@profile.user], method: :patch do |f| %>
@@ -61,7 +62,6 @@ Social Links
           <%= f.submit "Update Password" %>
         <% end %>
       </div>
-
       <div class="modal-footer">
       </div>
     </div>

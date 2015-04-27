@@ -1,7 +1,13 @@
-<h1>Forgot Password</h1>
- <%= simple_form_for [@user], method: :patch do |f| %>
-  Enter new password below:
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.submit "Update Password" %>
-<% end %>
+<div class="container">
+  <div class="centered-login">
+
+  <h1>Forgot Password</h1>
+   <%= simple_form_for [@user], method: :patch do |f| %>
+    Enter new password below:
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit "Update Password", class: "btn btn-success" %>
+  <% end %>
+
+  </div>
+</div>

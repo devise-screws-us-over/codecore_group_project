@@ -63,6 +63,14 @@ class UsersController < ApplicationController
   #for the forgot password link
   def send_password
     @email = params[:email]
+    if User.find_by_email(@email)
+      @user = User.find_by_email(@email)
+      PasswordReminderMailer.notify_password_change(@user).deliver
+      #send mailer
+      redirect_to new_session_path, notice: "email has been sent with instructions to set password"
+    else
+      redirect_to forgot_password_path, alert: "sorry, no emails match"
+    end
   end
 
   private
