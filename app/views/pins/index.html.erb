@@ -1,13 +1,13 @@
-<div class="content col-md-12">
+<div class="content col-md-12 col-sm-12">
   <div class="content">
       <h1>My Pinned Ideas</h1>
   </div>
-</div>  
+</div>
 
+<div class="content col-md-12">
 <!-- Field for filtering ideas: -->
   <%= render "/layouts/filter" %>
 
-<div class="content col-md-12">
   <ul class="list-group" id="ideas">
     <% @pins.each do |pin| %>
       <li class="list-group-item">
