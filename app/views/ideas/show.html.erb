@@ -36,7 +36,7 @@
     </div>
     <% else %>
       <div class="content">
-        <p><%= @idea.body %></p>
+        <p><%= markdown(@idea.body) %></p>
       </div> 
     <% end %>
 
