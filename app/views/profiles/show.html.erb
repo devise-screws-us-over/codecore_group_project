@@ -33,38 +33,42 @@
 <div class="content col-md-12">
   <ul class="list-group">
     <% @ideas.each do |idea| %>
-        <li class="list-group-item">       
+      <% current_user.ideas.each do |current_user_idea| %>
+        <% if current_user_idea.id ==  idea.id %>
+            <li class="list-group-item">       
 
-          <div class="pin" id= "<%= dom_id(idea) %>">
-            <%= render partial: "/pins/pin", locals: {idea: idea} %>
-          </div>
-          
-          <span class="idea-title"><%= link_to idea.title, idea %></span>
-
-          <!-- Modal to Share An Idea with A Team (hidden)-->
-          <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
-
-        <% if can? :edit, idea %>
-          <div class="ideas-list-buttons">
-            <div class = "list-button">
-              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= idea.id %>">
-                <span class="fa fa-users"></span>
-              </button>
-            </div>
-          <% end %>
+              <div class="pin" id= "<%= dom_id(idea) %>">
+                <%= render partial: "/pins/pin", locals: {idea: idea} %>
+              </div>
               
-            <div class="list-button">
-            <% if can? :delete, idea %>
-              <% if idea.user == current_user %>
-                <%= button_to idea_path(idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"}, class: "btn btn-lg" do %>
-                  <span><i class="fa fa-trash-o"></i></span>
-                <% end %>
-              <% end %>
-            <% end %>
-            </div>            
-          </div>
+              <span class="idea-title"><%= link_to idea.title, idea %></span>
 
-        </li>
+              <!-- Modal to Share An Idea with A Team (hidden)-->
+              <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
+
+            <% if can? :edit, idea %>
+              <div class="ideas-list-buttons">
+                <div class = "list-button">
+                  <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= idea.id %>">
+                    <span class="fa fa-users"></span>
+                  </button>
+                </div>
+              <% end %>
+                  
+                <div class="list-button">
+                <% if can? :delete, idea %>
+                  <% if idea.user == current_user %>
+                    <%= button_to idea_path(idea), method: :delete, data: {confirm: "Are you sure you want to delete this idea?"}, class: "btn btn-lg" do %>
+                      <span><i class="fa fa-trash-o"></i></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                </div>            
+              </div>
+
+            </li>
+          <% end %>
+        <% end %>
     <% end %>
   </ul>
 </div>
