@@ -9,7 +9,9 @@
   <%= render "/layouts/filter" %>
 
   <ul class="list-group" id="ideas">
+
     <% @pins.each do |pin| %>
+
       <li class="list-group-item">
 
         <div class="pin" id= "<%= dom_id(pin.idea) %>">
@@ -18,8 +20,8 @@
           
         <span><%= link_to pin.idea.title, pin.idea %></span>
 
-        <% if can? :edit, pin.idea %>
-          <div class="ideas-list-buttons">
+        <div class="ideas-list-buttons">
+          <% if can? :edit, pin.idea %>
             <div class = "list-button">
               <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= pin.idea.id %>">
                 <span class="fa fa-users"></span>
