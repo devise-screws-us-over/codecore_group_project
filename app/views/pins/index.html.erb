@@ -21,15 +21,28 @@
         <% if can? :edit, pin.idea %>
           <div class="ideas-list-buttons">
             <div class = "list-button">
-              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#<%= dom_id(pin.idea) %>">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= pin.idea.id %>">
                 <span class="fa fa-users"></span>
               </button>
             </div>
           <% end %>
 
           <!-- Modal to Share An Idea with A Team (hidden)-->
-          <%= render partial: "/shared/share_modal", locals: {idea: pin.idea} %>        
-
+          <div class="modal fade" id="idea-modal-<%= pin.idea.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Idea With:</h4>
+                </div>
+              <div class="modal-body">
+            <%# partial to share this idea with a team %>
+          <%= render partial: "/teams/share", locals: {idea: pin.idea} %>
+          </div>
+        </div>
+      </div>
+    </div>
+         
             <div class="list-button" id="idea-delete-btn-<%= pin.idea.id %>">
               <%= render partial: "/ideas/delete_pin_idea", locals: {pin: pin} %>
             </div>

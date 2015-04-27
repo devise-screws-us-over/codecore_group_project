@@ -55,10 +55,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])    
   end
 
+  #for the forgot password link
   def forgot_password
     @email = params[:email]
   end
 
+  #for the forgot password link
   def send_password
     @email = params[:email]
   end
