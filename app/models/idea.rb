@@ -21,4 +21,5 @@ class Idea < ActiveRecord::Base
   def mk_body
     markdown body
   end
+
 end

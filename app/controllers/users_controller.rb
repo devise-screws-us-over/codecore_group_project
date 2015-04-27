@@ -13,10 +13,13 @@ class UsersController < ApplicationController
       @user.profile = Profile.create
       session[:user_id] = @user.id
 
-      # If there is a pending invitation with the new user's email address
-      if Invitation.find_by_recipient(@user.email)
-        invitation = Invitation.find_by_recipient(@user.email)
+      # # If there is a pending invitation with the new user's email address
+      if Invitation.find_by_key(session[:key_match])
+        invitation = Invitation.find_by_key(session[:key_match])
         membership = Membership.create(user_id: @user.id, team_id: invitation.team.id)
+        invitation.accepted = true
+        invitation.save
+        session[:key_match] = nil
       end
 
       redirect_to root_path, notice: "Account Created. Welcome to Ideaz!!"
