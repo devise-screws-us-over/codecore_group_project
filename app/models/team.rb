@@ -16,4 +16,8 @@ class Team < ActiveRecord::Base
 
   has_many :invitations, dependent: :destroy
   has_many :invite_senders, through: :invitations, source: :user
+
+  def mk_name
+    markdown name
+  end
 end

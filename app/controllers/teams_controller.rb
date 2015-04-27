@@ -1,7 +1,9 @@
 class TeamsController < ApplicationController
 
   before_action :authenticate_user!
-  
+
+  respond_to :html, :json
+
   # This block is only for testing
   def index
     @team = Team.all
@@ -54,7 +56,7 @@ class TeamsController < ApplicationController
     #       @membership = Membership.create(user_id: @invitee_user.id, team_id: @team_id.id )
     #       # If the invitee has ALREADY accepted the invitation
     #     else
-    #       flash[:alert] = "You have already accepted your invitation!"          
+    #       flash[:alert] = "You have already accepted your invitation!"
     #     end
     #   end
     # end
@@ -64,13 +66,12 @@ class TeamsController < ApplicationController
   end
 
   def update
-    @team = Team.find(params[:id])
-    redirect_to root_path, alert: "access denied" unless can? :manage, @team
-    if @team.update(team_params)
-      redirect_to edit_team_path(@team)
-    else
-      render 'edit'
-    end
+   @team = Team.find(params[:id])
+   redirect_to root_path, alert: "access denied" unless can? :manage, @team
+   @team.update(team_params)
+
+   respond_with @team
+
   end
 
   def destroy
