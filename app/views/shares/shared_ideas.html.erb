@@ -13,13 +13,25 @@
       <% team.shared_ideas.each do |idea| %>
         <% if idea.user != current_user %>  
           <li class="list-group-item">
-          <div class="pin" id= "<%= dom_id(idea) %>">
+            <div class="pin" id= "<%= dom_id(idea) %>">
             <%= render partial: "/pins/pin", locals: {idea: idea} %>
-          </div>
-          <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
-        </li>
+            </div>
+            <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
+
+            <% idea_teams = idea.teams %>
+            <% current_user_teams = current_user.teams %>
+            <% my_var = (idea_teams & current_user.teams) %>
+
+            <% share_team = !my_var.empty? ? my_var.last.name : nil %>
+            
+            <% if cannot? :edit, idea %> 
+              <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= idea.user.full_name %> Shared through: <%= share_team %>">
+                <%= link_to image_tag(avatar_url(idea.user.profile)), profile_path(idea.user.profile) %>
+              </div>
+            <% end %>
         <% end %>
       <% end %>
+    </li>
   <% end %>
   </ul>
 </div>    
