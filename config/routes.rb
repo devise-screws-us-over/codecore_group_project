@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
   resources :teams do
     resources :invitations, only: [:create]
+    resources :memberships, only: [:destroy]
   end
   
   resources :ideas do
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
 
   root "ideas#index"
 
-  resources :memberships, only: [:create, :update, :destroy]
+  resources :memberships, only: [:create, :update]
 
   get "/shared_ideas" => "shares#shared_ideas"
 

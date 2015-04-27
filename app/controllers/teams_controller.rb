@@ -63,6 +63,7 @@ class TeamsController < ApplicationController
 
     @team = Team.find(params[:id])
     @ideas = @team.most_popular
+    @membership = current_user.memberships.find_by_team_id(@team)
   end
 
   def update
