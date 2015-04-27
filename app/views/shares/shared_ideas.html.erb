@@ -1,0 +1,25 @@
+<div class="content col-md-12 col-sm-12"> 
+  <div class="content">
+    <h1>My Shared Ideas</h1>
+  </div>
+</div>
+
+<div class="content col-md-12">
+  <!-- Field for filtering ideas: -->
+  <%= render partial: "/layouts/filter" %>
+
+  <ul class="list-group" id="ideas">
+    <% @teams.each do |team| %>
+      <% team.shared_ideas.each do |idea| %>
+        <% if idea.user != current_user %>  
+          <li class="list-group-item">
+          <div class="pin" id= "<%= dom_id(idea) %>">
+            <%= render partial: "/pins/pin", locals: {idea: idea} %>
+          </div>
+          <span class="idea-title"><%= link_to idea.title, idea_path(idea) %></span>
+        </li>
+        <% end %>
+      <% end %>
+  <% end %>
+  </ul>
+</div>    

@@ -1,0 +1,74 @@
+<!-- PAGE 6 WIREFRAME -->
+<div>
+  <div class="content">
+    <h1><%= best_in_place @team, :name, display_with: lambda { |n| markdown(n)} %></h1>
+  </div>
+
+  <div class="content-element">
+    <input id="filter-library" />
+    <div class="content">
+      <%# extra layer of protection from CanCanCan %>
+      <% if can? :edit, @team %>
+        <% if current_user == @team.owner %>
+          <%= link_to "Manage", edit_team_path, class: "btn btn-default fa fa-pencil" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Leave Team", team_membership_path(@team, @membership), method: :delete, data:{confirm: "Are you sure you want to leave this team?"}, class: "btn btn-default fa fa-pencil" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="content col-md-12">
+  <ul class="list-group" id="ideas">
+    <% @ideas.order("title").each do |idea| %>
+      <li class="list-group-item">
+
+        <div class="pin" id= "<%= dom_id(idea) %>">
+          <%= render partial: "/pins/pin", locals: {idea: idea} %>
+        </div>
+
+        <span class="idea-title"><%= link_to idea.title, idea %></span>
+
+        <!-- Modal to Share An Idea with A Team (hidden)-->
+        <%= render partial: "/shared/share_modal", locals: {idea: idea} %>
+
+        <% if can? :edit, idea %>
+          <div class="ideas-list-buttons">
+            <div class = "list-button">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= idea.id %>">
+                <span class="fa fa-users"></span>
+              </button>
+            </div>
+          <% end %>
+
+            <div class="list-button" id="idea-delete-btn-<%= idea.id %>">
+              <%= render partial: "/ideas/delete_idea", locals: {idea: idea} %>
+            </div>
+
+            <% if cannot? :edit, idea %> 
+              <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= idea.user.full_name %> Shared through: <%= @team.name %>">
+                <%= link_to image_tag(avatar_url(idea.user.profile)), profile_path(idea.user.profile) %>
+              </div>
+            <% end %>
+
+          </div>
+
+        </li>
+    <% end %>
+  </ul>
+
+  <% if @key_match %>
+    <p><%= @key_match %></p>
+  <% end %>
+</div>
+
+<script>
+$('#filter-library').change(function(){
+    var filter = $('#filter-library').val();
+    $("#ideas li:not(:contains('"+filter+"'))").hide();
+    $("#ideas li:contains('"+filter+"')").show();
+  }).keyup(function() {
+      $(this).change();
+  });
+</script>

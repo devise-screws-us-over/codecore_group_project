@@ -1,0 +1,67 @@
+<div class="content col-md-12 col-sm-12">
+  <div class="content">
+      <h1>My Pinned Ideas</h1>
+  </div>
+</div>
+
+<div class="content col-md-12">
+<!-- Field for filtering ideas: -->
+  <%= render "/layouts/filter" %>
+
+  <ul class="list-group" id="ideas">
+    <% @pins.each do |pin| %>
+      <li class="list-group-item">
+
+        <div class="pin" id= "<%= dom_id(pin.idea) %>">
+          <%= render partial: "/pins/pin_my_pins", locals: {pin: pin} %>
+        </div>
+          
+        <span><%= link_to pin.idea.title, pin.idea %></span>
+
+        <% if can? :edit, pin.idea %>
+          <div class="ideas-list-buttons">
+            <div class = "list-button">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#idea-modal-<%= pin.idea.id %>">
+                <span class="fa fa-users"></span>
+              </button>
+            </div>
+          <% end %>
+
+          <!-- Modal to Share An Idea with A Team (hidden)-->
+          <div class="modal fade" id="idea-modal-<%= pin.idea.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Share This Idea With:</h4>
+                </div>
+              <div class="modal-body">
+                <%# partial to share this idea with a team %>
+                <%= render partial: "/teams/share", locals: {idea: pin.idea} %>
+              </div>
+        </div>
+      </div>
+    </div>
+         
+            <div class="list-button" id="idea-delete-btn-<%= pin.idea.id %>">
+              <%= render partial: "/ideas/delete_pin_idea", locals: {pin: pin} %>
+            </div>
+
+              <% idea_teams = pin.idea.teams %>
+              <% current_user_teams = current_user.teams %>
+              <% my_var = (idea_teams & current_user.teams) %>
+
+              <% share_team = !my_var.empty? ? my_var.last.name : nil %>
+            
+            <% if cannot? :edit, pin.idea %> 
+              <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= pin.idea.user.full_name %> Shared through: <%= share_team %>">
+                <%= link_to image_tag(avatar_url(pin.idea.user.profile)), profile_path(pin.idea.user.profile) %>
+              </div>
+              <% end %>
+            
+          </div>
+
+      </li>
+    <% end %>
+  </ul>
+</div>
