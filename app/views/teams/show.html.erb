@@ -1,7 +1,7 @@
 <!-- PAGE 6 WIREFRAME -->
 <div>
   <div class="content">
-    <h1><%= markdown(@team.name) %></h1>
+    <h1><%= best_in_place @team, :name, display_with: lambda { |n| markdown(n)} %></h1>
   </div>
 
   <div class="content-element">
