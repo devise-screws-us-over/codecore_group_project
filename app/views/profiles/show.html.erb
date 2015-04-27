@@ -26,17 +26,27 @@
 
 <div class="content col-md-12">
   <div class="content" style="margin-top: 20px;">
-    <h3>Ideas You've Shared with <%= @profile.user.first_name %>:</h1>
+    <h3>Ideas You And <%= @profile.user.first_name %> Have In Common:</h1>
   </div>
 </div>
 
 <div class="content col-md-12">
   <ul class="list-group">
+    <%# show ideas we have in common..i.e., ideas that I've created
+    that I have shared with you (the profile owner) %>
+    <%# iterate over the profile owners ideas, and match them
+    with any shared ideas amongst the current_user who is viewing
+    the profile %>
     <% @ideas.each do |idea| %>
-      <% current_user.ideas.each do |current_user_idea| %>
-        <% if current_user_idea.id ==  idea.id %>
-            <li class="list-group-item">       
-
+        <%# grab the current users teams, and iterate over those to 
+        find his shared ideas %>
+        <% current_user.teams.each do |team| %>
+          <%# find all of the shared ideas amongst each team %>
+          <% team.shared_ideas.each do |shared_idea| %>
+            <%# see if any ideas the current_user has shared match
+            ideas on the profile users page %>
+            <% if shared_idea.id ==  idea.id %>
+              <li class="list-group-item">       
               <div class="pin" id= "<%= dom_id(idea) %>">
                 <%= render partial: "/pins/pin", locals: {idea: idea} %>
               </div>
@@ -67,6 +77,7 @@
               </div>
 
             </li>
+            <% end %>
           <% end %>
         <% end %>
     <% end %>

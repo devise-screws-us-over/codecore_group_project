@@ -35,7 +35,11 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
-    @ideas = current_user.ideas
+    #start by showing the teams specific to the profile being
+    #viewed.  Will then iterate over this in the view to only pull
+    #the ideas that belong to a team that the current_user belongs
+    #to
+    @ideas = @profile.user.ideas
   end
 
   private
