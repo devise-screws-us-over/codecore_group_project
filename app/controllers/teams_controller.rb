@@ -54,13 +54,14 @@ class TeamsController < ApplicationController
           @membership = Membership.create(user_id: @invitee_user.id, team_id: @team_id.id )
           # If the invitee has ALREADY accepted the invitation
         else
-          flash[:alert] = "You have already accepted your invitation!"          
+          flash[:alert] = "You have already accepted your invitation!"
         end
       end
     end
 
     @team = Team.find(params[:id])
     @ideas = @team.most_popular
+    @membership = current_user.memberships.find_by_team_id(@team)
   end
 
   def update

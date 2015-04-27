@@ -11,9 +11,9 @@
       <% if can? :edit, @team %>
         <% if current_user == @team.owner %>
           <%= link_to "Manage", edit_team_path, class: "btn btn-default fa fa-pencil" %>
-        <% else %>
-          <%= link_to "Leave Team", ideas_path, class: "btn btn-default fa fa-pencil" %>
         <% end %>
+      <% else %>
+        <%= link_to "Leave Team", team_membership_path(@team, @membership), method: :delete, data:{confirm: "Are you sure you want to leave this team?"}, class: "btn btn-default fa fa-pencil" %>
       <% end %>
     </div>
   </div>
