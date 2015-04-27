@@ -30,4 +30,5 @@ class PinsController < ApplicationController
        format.js { render }
      end
    end
+
 end

@@ -46,6 +46,12 @@
               <%= render partial: "/ideas/delete_idea", locals: {idea: idea} %>
             </div>
 
+            <% if cannot? :edit, idea %> 
+              <div class="list-button avatar" data-toggle="tooltip" data-placement="left" title="Created by: <%= idea.user.full_name %> Shared through: <%= @team.name %>">
+                <%= link_to image_tag(avatar_url(idea.user.profile)), profile_path(idea.user.profile) %>
+              </div>
+            <% end %>
+
           </div>
 
         </li>

@@ -61,7 +61,7 @@ class IdeasController < ApplicationController
       format.js { render }
     end
   end
-
+  
 
   private
 
