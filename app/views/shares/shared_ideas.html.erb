@@ -1,18 +1,10 @@
-<h1>My Shared Ideas (Sorted By Team)</h1>
+<h1>My Shared Ideas</h1>
 
 <!-- Field for filtering ideas: -->
-  <%= render partial: "/layouts/filter" %>
+<%= render partial: "/layouts/filter" %>
 <% @teams.each do |team| %>
-    <h2><%= link_to team.name, team_path(team) %></h2>
-    <hr>
-    <ul>
     <% team.shared_ideas.each do |idea| %>
         <li><%= link_to idea.title, idea_path(idea) %></li>
-    <% team.shared_ideas.each do |idea| %>
-        <% if idea.user_id != current_user.id %>
-          <%= link_to idea.title, idea_path(idea) %>
-         <br>
-        <% end %>
       <% end %>
     </ul>
 <% end %>

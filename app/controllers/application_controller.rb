@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :invitation_key
+
+  def invitation_key
+    if params[:key_match]
+      # Store token in cookies
+      session[:key_match] = params[:key_match]
+    end
+
+  end
+
   def current_user
     @current_user ||= User.find_by_id session[:user_id]
   end
